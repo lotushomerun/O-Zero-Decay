@@ -19,7 +19,7 @@ class_name Human
 var statuses: Array[Status] = []
 var _status_second_timer := 0.0
 
-func add_status(status: Status, stage: int=0) -> void:
+func add_status(status: Status, stage:int = 0) -> void:
 	status.on_add_status()
 	_add_status(status, stage)
 	
@@ -27,7 +27,7 @@ func remove_status(status: Status) -> void:
 	status.on_remove_status()
 	_remove_status(status)
 
-func stage_status(status: Status, stage: int=0) -> void:
+func stage_status(status: Status, stage:int = 0) -> void:
 	status.on_stage_status(stage)
 	_stage_status(status, stage)
 	
@@ -43,7 +43,7 @@ func get_status(status_class: String) -> Status:
 		if a && str(a.get_script().get_global_name()) == status_class: return a
 	return null
 	
-func _add_status(status: Status, stage: int=0) -> void:
+func _add_status(status: Status, stage:int = 0) -> void:
 	if status in statuses: return
 	status.human = self
 	status.stage = stage
@@ -55,7 +55,7 @@ func _remove_status(status: Status) -> void:
 	statuses.erase(status)
 	if is_instance_valid(status.ui_status): status.ui_status.status_manager.remove_status(status.ui_status) # Delete UI icon
 
-func _stage_status(status: Status, stage: int=0) -> void:
+func _stage_status(status: Status, stage:int = 0) -> void:
 	status._on_stage_status(stage)
 	print("changed stage of %s from %s to %s" %[status.get_script().get_global_name(),status.stage,stage])
 	status.stage = stage

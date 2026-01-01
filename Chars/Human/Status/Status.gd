@@ -17,12 +17,12 @@ var seconds: int = 30
 
 # Public (for showing messages and stuff, something that would happen if you got the status at spawn for example and not acquire it)
 func on_add_status() -> void: pass
-func on_stage_status(int) -> void: pass
+func on_stage_status(_int) -> void: pass
 func on_remove_status() -> void: pass
 
 # Private (technical part)
 func _on_add_status() -> void: pass
-func _on_stage_status(int) -> void: pass
+func _on_stage_status(_int) -> void: pass
 func _on_remove_status() -> void: pass
 
 # Time related

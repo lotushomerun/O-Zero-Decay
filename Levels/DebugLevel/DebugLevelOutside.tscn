@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c5o7o63qpw4pe" path="res://Levels/Level/Level.gd" id="1_phjtr"]
 [ext_resource type="PackedScene" uid="uid://4bxfvh6qm8wg" path="res://Effects/Rain/Rain.tscn" id="2_rqtaj"]
 [ext_resource type="PackedScene" uid="uid://u4j448rmc4lf" path="res://Effects/Rain/Splashes.tscn" id="3_oq1y1"]
-[ext_resource type="Texture2D" uid="uid://b6v4nmopx72xu" path="res://Effects/Rain/RainSplash2.png" id="4_rqtaj"]
+[ext_resource type="Texture2D" uid="uid://dnk1781661mdj" path="res://Effects/Rain/RainSplash5.png" id="4_rqtaj"]
 [ext_resource type="Texture2D" uid="uid://cnt5tlqlkup" path="res://Levels/DebugLevel/Checkered.png" id="5_xel3v"]
 [ext_resource type="PackedScene" uid="uid://bk04s8j8tqipt" path="res://Interactable/Objects/Stone/Stone.tscn" id="6_retct"]
 [ext_resource type="PackedScene" uid="uid://dyfjp3m0r1anq" path="res://Player/Player.tscn" id="7_41kgv"]
