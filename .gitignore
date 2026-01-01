@@ -17,3 +17,6 @@ mono_crash.*.json
 # System files
 .DS_Store
 Thumbs.db
+
+# Releases
+.exports/
