@@ -19,8 +19,8 @@ func _setup(data: Status, manager: StatusManager) -> void:
 	data.ui_status = self # Write us down
 	status_manager = manager
 	status_data = data
-	title.text = data.title
-	desc.text = data.description
+	title.text = data.title[data.stage]
+	desc.text = data.description[data.stage]
 	texture = data.icon
 	title_panel.modulate = data.color
 	desc_panel.modulate = data.color
@@ -31,7 +31,9 @@ func _process(_delta: float) -> void:
 		elif status_data.seconds > 10 && blink_tween != null: _stop_blinking()
 	
 func _update_timer() -> void:
-	if !status_data.infinite: title.text = status_data.title + " (%ds)" % [status_data.seconds]
+	if !status_data.infinite: title.text = status_data.title[status_data.stage] + " (%ds)" % [status_data.seconds]
+	title.text = status_data.title[status_data.stage]
+	desc.text = status_data.description[status_data.stage]
 
 #region Blinking
 func _start_blinking():
