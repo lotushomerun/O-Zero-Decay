@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://d21q5bvrrdje2"]
+
+[ext_resource type="Script" uid="uid://taw4wymvl4nm" path="res://UI/Context/ContextButton.gd" id="1_xkeom"]
+[ext_resource type="AudioStream" uid="uid://dcssptf8xfpte" path="res://Sounds/UI/UIClick.ogg" id="2_q247e"]
+[ext_resource type="AudioStream" uid="uid://dboci45dwqglw" path="res://Sounds/UI/UIHover.ogg" id="3_578tf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gleao"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkeom"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.04, 0.04, 0.04, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urkqc"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.17, 0.17, 0.17, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q247e"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.04, 0.04, 0.04, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="ContextButton" type="Button"]
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gleao")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xkeom")
+theme_override_styles/hover = SubResource("StyleBoxFlat_urkqc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_q247e")
+text = "Test"
+script = ExtResource("1_xkeom")
+click_sound = ExtResource("2_q247e")
+hover_sound = ExtResource("3_578tf")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

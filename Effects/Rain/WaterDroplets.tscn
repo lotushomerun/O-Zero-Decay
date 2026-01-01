@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://by585wh3j1hnl"]
+
+[ext_resource type="Texture2D" uid="uid://bpm1u40ya1wnl" path="res://Effects/Rain/Droplet.png" id="1_xlppa"]
+
+[sub_resource type="Curve" id="Curve_1yxmc"]
+_data = [Vector2(0, 0.6067416), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iuab1"]
+curve = SubResource("Curve_1yxmc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mj3ob"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(6, 16, 1)
+gravity = Vector3(0, 98, 0)
+color = Color(0.336, 0.4573334, 0.7, 1)
+alpha_curve = SubResource("CurveTexture_iuab1")
+
+[node name="WaterDroplets" type="GPUParticles2D"]
+emitting = false
+texture = ExtResource("1_xlppa")
+lifetime = 0.9
+visibility_rect = Rect2(-16, -32, 32, 96)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_mj3ob")

@@ -1,0 +1,566 @@
+[gd_scene load_steps=47 format=3 uid="uid://dw7o4xnlbj7p2"]
+
+[ext_resource type="Script" uid="uid://cxr3fqbyqmybl" path="res://Chars/Human/Human.gd" id="1_23c26"]
+[ext_resource type="PackedScene" uid="uid://cpr4h1gen3u0o" path="res://Chars/Human/HumanRig.tscn" id="1_i3mrc"]
+[ext_resource type="Script" uid="uid://bug7mg8yn3ocw" path="res://Chars/Movement.gd" id="2_b8f3i"]
+[ext_resource type="Shader" uid="uid://bosk2jqkyy31l" path="res://Chars/Human/Bodypart.gdshader" id="3_211x3"]
+[ext_resource type="Script" uid="uid://bpwq2gl546uno" path="res://Chars/AI/HumanAI.gd" id="4_1yxmc"]
+[ext_resource type="PackedScene" uid="uid://cppafblbtmmm8" path="res://Interactable/Interactable.tscn" id="4_cct75"]
+[ext_resource type="Texture2D" uid="uid://c7o2s537sif2e" path="res://Chars/Human/DirtMaskBody.tres" id="4_q7wxt"]
+[ext_resource type="Texture2D" uid="uid://dotfwywalle5a" path="res://Interactable/Items/Clothes/DirtTexture.tres" id="5_qfsuc"]
+[ext_resource type="Shader" uid="uid://bwr57161wjo08" path="res://Interactable/Items/Clothes/Clothes.gdshader" id="6_6qqpw"]
+[ext_resource type="Texture2D" uid="uid://m27xoah7ock1" path="res://Interactable/Items/Clothes/DirtMask.tres" id="7_k7txb"]
+[ext_resource type="Shader" uid="uid://chqouih860n60" path="res://Interactable/Items/Clothes/Sneakers/Sneakers.gdshader" id="8_5begg"]
+[ext_resource type="Shader" uid="uid://br1p6vxg2nwy0" path="res://Chars/Human/Eyes.gdshader" id="9_3jqvo"]
+[ext_resource type="Shader" uid="uid://dur3gmsso2rlb" path="res://Chars/Human/Hair.gdshader" id="10_c4v7h"]
+[ext_resource type="Script" uid="uid://vk45hvtnghxh" path="res://Chars/Human/Stamina.gd" id="12_q7wxt"]
+[ext_resource type="Script" uid="uid://ctirshhglayxg" path="res://Chars/Human/Combat.gd" id="13_qfsuc"]
+[ext_resource type="Script" uid="uid://b7mba1m3k538f" path="res://Chars/Human/Actions.gd" id="14_6qqpw"]
+[ext_resource type="Script" uid="uid://bs5fmpn8my8i3" path="res://Chars/Human/Sex.gd" id="15_k7txb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pucu0"]
+resource_local_to_scene = true
+shader = ExtResource("3_211x3")
+shader_parameter/is_front = false
+shader_parameter/skin_tone = 0.0
+shader_parameter/dirt_mask = ExtResource("4_q7wxt")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+shader_parameter/dirt_max_alpha = 0.70000003325
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6ye1"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = false
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okfn8"]
+resource_local_to_scene = true
+shader = ExtResource("8_5begg")
+shader_parameter/is_front = false
+shader_parameter/base_color1 = Color(0.7882353, 0.45490196, 0.85490197, 1)
+shader_parameter/target_color1 = Color(0, 0, 0, 1)
+shader_parameter/base_color2 = Color(0.2627451, 0.54901963, 0.8745098, 1)
+shader_parameter/target_color2 = Color(0, 0, 0, 1)
+shader_parameter/base_color3 = Color(0.39607844, 0.8117647, 0.34117648, 1)
+shader_parameter/target_color3 = Color(0, 0, 0, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0l7wm"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = false
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cil0q"]
+resource_local_to_scene = true
+shader = ExtResource("3_211x3")
+shader_parameter/is_front = true
+shader_parameter/skin_tone = 0.0
+shader_parameter/dirt_mask = ExtResource("4_q7wxt")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+shader_parameter/dirt_max_alpha = 0.70000003325
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7m0dg"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5x3j"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgp3w"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pt4dw"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtrv5"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewwtj"]
+resource_local_to_scene = true
+shader = ExtResource("8_5begg")
+shader_parameter/is_front = true
+shader_parameter/base_color1 = Color(0.7882353, 0.45490196, 0.85490197, 1)
+shader_parameter/target_color1 = Color(0, 0, 0, 1)
+shader_parameter/base_color2 = Color(0.2627451, 0.54901963, 0.8745098, 1)
+shader_parameter/target_color2 = Color(0, 0, 0, 1)
+shader_parameter/base_color3 = Color(0.39607844, 0.8117647, 0.34117648, 1)
+shader_parameter/target_color3 = Color(0, 0, 0, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb0fv"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = false
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_grkhf"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = false
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jklqm"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = false
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpgr6"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = false
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jw5u8"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrrl8"]
+resource_local_to_scene = true
+shader = ExtResource("9_3jqvo")
+shader_parameter/base_color = Color(0.27058825, 0.5882353, 0.9254902, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gaaq2"]
+resource_local_to_scene = true
+shader = ExtResource("10_c4v7h")
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+shader_parameter/dirt_max_alpha = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmkyj"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqri7"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3r10"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ffpg"]
+resource_local_to_scene = true
+shader = ExtResource("6_6qqpw")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("7_k7txb")
+shader_parameter/dirt_texture = ExtResource("5_qfsuc")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yxmc"]
+size = Vector2(31, 34)
+
+[sub_resource type="Curve" id="Curve_1yxmc"]
+_data = [Vector2(0, 0.6067416), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iuab1"]
+curve = SubResource("Curve_1yxmc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jx6hy"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(6, 16, 1)
+gravity = Vector3(0, 98, 0)
+color = Color(0.336, 0.4573334, 0.7, 1)
+alpha_curve = SubResource("CurveTexture_iuab1")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i3mrc"]
+radius = 6.135376
+height = 63.241302
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cct75"]
+radius = 6.135376
+height = 34.920254
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cct75"]
+size = Vector2(39.310696, 11.955288)
+
+[node name="Human" type="CharacterBody2D" node_paths=PackedStringArray("stamina", "combat", "actions", "sex", "rig", "movement", "ai", "interactable")]
+collision_mask = 6
+script = ExtResource("1_23c26")
+stamina = NodePath("Stamina")
+combat = NodePath("Combat")
+actions = NodePath("Actions")
+sex = NodePath("Sex")
+rig = NodePath("HumanRig")
+movement = NodePath("Movement")
+ai = NodePath("HumanAI")
+interactable = NodePath("Interactable")
+
+[node name="HumanRig" parent="." instance=ExtResource("1_i3mrc")]
+
+[node name="Spine" parent="HumanRig/Skeleton2D" index="0"]
+scale = Vector2(0.9999669, 0.9999669)
+
+[node name="BackUpperLeg" parent="HumanRig/Skeleton2D/Spine" index="0"]
+scale = Vector2(0.99996376, 0.99996376)
+
+[node name="BackFoot" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg/BackLowerLeg" index="0"]
+scale = Vector2(0.99998134, 0.99998134)
+
+[node name="BackFoot" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg/BackLowerLeg/BackFoot" index="0"]
+material = SubResource("ShaderMaterial_pucu0")
+
+[node name="BackSock" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg/BackLowerLeg/BackFoot" index="1"]
+material = SubResource("ShaderMaterial_a6ye1")
+
+[node name="BackShoe" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg/BackLowerLeg/BackFoot" index="2"]
+material = SubResource("ShaderMaterial_okfn8")
+
+[node name="BackLowerLeg" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg/BackLowerLeg" index="1"]
+material = SubResource("ShaderMaterial_pucu0")
+
+[node name="BackLowerLegSock" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg/BackLowerLeg" index="2"]
+material = SubResource("ShaderMaterial_a6ye1")
+
+[node name="BackLowerLegPants" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg/BackLowerLeg" index="3"]
+material = SubResource("ShaderMaterial_0l7wm")
+
+[node name="BackUpperLeg" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg" index="1"]
+material = SubResource("ShaderMaterial_pucu0")
+
+[node name="BackUpperLegSock" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg" index="2"]
+material = SubResource("ShaderMaterial_a6ye1")
+
+[node name="BackUpperLegPants" parent="HumanRig/Skeleton2D/Spine/BackUpperLeg" index="3"]
+material = SubResource("ShaderMaterial_0l7wm")
+
+[node name="Penis" parent="HumanRig/Skeleton2D/Spine" index="1"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="Spine" parent="HumanRig/Skeleton2D/Spine" index="2"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="Panties" parent="HumanRig/Skeleton2D/Spine" index="3"]
+material = SubResource("ShaderMaterial_7m0dg")
+
+[node name="SpinePants" parent="HumanRig/Skeleton2D/Spine" index="4"]
+material = SubResource("ShaderMaterial_v5x3j")
+
+[node name="SpineShirt" parent="HumanRig/Skeleton2D/Spine" index="5"]
+material = SubResource("ShaderMaterial_kgp3w")
+
+[node name="SpineJacket" parent="HumanRig/Skeleton2D/Spine" index="6"]
+material = SubResource("ShaderMaterial_pt4dw")
+
+[node name="FrontUpperLeg" parent="HumanRig/Skeleton2D/Spine" index="7"]
+scale = Vector2(0.99995077, 0.99995077)
+
+[node name="FrontLowerLeg" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg" index="0"]
+scale = Vector2(0.99999726, 0.99999726)
+
+[node name="FrontFoot" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg/FrontLowerLeg" index="0"]
+scale = Vector2(0.99998623, 0.99998623)
+
+[node name="FrontFoot" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg/FrontLowerLeg/FrontFoot" index="0"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="FrontSock" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg/FrontLowerLeg/FrontFoot" index="1"]
+material = SubResource("ShaderMaterial_xtrv5")
+
+[node name="FrontShoe" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg/FrontLowerLeg/FrontFoot" index="2"]
+material = SubResource("ShaderMaterial_ewwtj")
+
+[node name="FrontLowerLeg" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg/FrontLowerLeg" index="1"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="FrontLowerLegSock" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg/FrontLowerLeg" index="2"]
+material = SubResource("ShaderMaterial_xtrv5")
+
+[node name="FrontLowerLegPants" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg/FrontLowerLeg" index="3"]
+material = SubResource("ShaderMaterial_v5x3j")
+
+[node name="FrontUpperLeg" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg" index="1"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="FrontUpperLegSock" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg" index="2"]
+material = SubResource("ShaderMaterial_xtrv5")
+
+[node name="FrontUpperLegPants" parent="HumanRig/Skeleton2D/Spine/FrontUpperLeg" index="3"]
+material = SubResource("ShaderMaterial_v5x3j")
+
+[node name="Chest" parent="HumanRig/Skeleton2D/Spine" index="8"]
+scale = Vector2(0.99996674, 0.99996674)
+
+[node name="BackUpperArm" parent="HumanRig/Skeleton2D/Spine/Chest" index="0"]
+scale = Vector2(0.9999447, 0.9999447)
+
+[node name="BackLowerArm" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm" index="0"]
+scale = Vector2(0.9999587, 0.9999587)
+
+[node name="BackLowerArm" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm/BackLowerArm" index="0"]
+material = SubResource("ShaderMaterial_pucu0")
+
+[node name="BackLowerArmShirt" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm/BackLowerArm" index="1"]
+material = SubResource("ShaderMaterial_eb0fv")
+
+[node name="BackLowerArmJacket" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm/BackLowerArm" index="2"]
+material = SubResource("ShaderMaterial_grkhf")
+
+[node name="BackHand" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm/BackLowerArm" index="3"]
+scale = Vector2(0.99996436, 0.99996436)
+
+[node name="BackHand" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm/BackLowerArm/BackHand" index="0"]
+material = SubResource("ShaderMaterial_pucu0")
+
+[node name="BackUpperArm" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm" index="1"]
+material = SubResource("ShaderMaterial_pucu0")
+
+[node name="BackUpperArmShirt" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm" index="2"]
+material = SubResource("ShaderMaterial_jklqm")
+
+[node name="BackUpperArmJacket" parent="HumanRig/Skeleton2D/Spine/Chest/BackUpperArm" index="3"]
+material = SubResource("ShaderMaterial_kpgr6")
+
+[node name="Chest" parent="HumanRig/Skeleton2D/Spine/Chest" index="1"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="Bra" parent="HumanRig/Skeleton2D/Spine/Chest" index="2"]
+material = SubResource("ShaderMaterial_jw5u8")
+
+[node name="ChestShirt" parent="HumanRig/Skeleton2D/Spine/Chest" index="3"]
+material = SubResource("ShaderMaterial_kgp3w")
+
+[node name="ChestJacket" parent="HumanRig/Skeleton2D/Spine/Chest" index="4"]
+material = SubResource("ShaderMaterial_pt4dw")
+
+[node name="Head" parent="HumanRig/Skeleton2D/Spine/Chest" index="6"]
+scale = Vector2(0.9999993, 0.9999993)
+
+[node name="Head" parent="HumanRig/Skeleton2D/Spine/Chest/Head" index="0"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="Eyes" parent="HumanRig/Skeleton2D/Spine/Chest/Head" index="1"]
+material = SubResource("ShaderMaterial_rrrl8")
+
+[node name="Hair" parent="HumanRig/Skeleton2D/Spine/Chest/Head" index="2"]
+material = SubResource("ShaderMaterial_gaaq2")
+
+[node name="Mask" parent="HumanRig/Skeleton2D/Spine/Chest/Head" index="3"]
+material = SubResource("ShaderMaterial_jmkyj")
+
+[node name="Hat" parent="HumanRig/Skeleton2D/Spine/Chest/Head" index="5"]
+material = SubResource("ShaderMaterial_wqri7")
+
+[node name="FrontUpperArm" parent="HumanRig/Skeleton2D/Spine/Chest" index="7"]
+scale = Vector2(0.99993646, 0.99993646)
+
+[node name="FrontLowerArm" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm" index="0"]
+scale = Vector2(0.99995345, 0.99995345)
+
+[node name="FrontLowerArm" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm/FrontLowerArm" index="0"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="FrontLowerArmShirt" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm/FrontLowerArm" index="1"]
+material = SubResource("ShaderMaterial_kgp3w")
+
+[node name="FrontLowerArmJacket" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm/FrontLowerArm" index="2"]
+material = SubResource("ShaderMaterial_b3r10")
+
+[node name="FrontHand" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm/FrontLowerArm" index="3"]
+scale = Vector2(0.9999681, 0.9999681)
+
+[node name="FrontHand" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm/FrontLowerArm/FrontHand" index="0"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="FrontUpperArm" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm" index="1"]
+material = SubResource("ShaderMaterial_cil0q")
+
+[node name="FrontUpperArmShirt" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm" index="2"]
+material = SubResource("ShaderMaterial_kgp3w")
+
+[node name="FrontUpperArmJacket" parent="HumanRig/Skeleton2D/Spine/Chest/FrontUpperArm" index="3"]
+material = SubResource("ShaderMaterial_1ffpg")
+
+[node name="AttackArea" type="Area2D" parent="HumanRig/Skeleton2D" index="1"]
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HumanRig/Skeleton2D/AttackArea"]
+position = Vector2(15.5, -9.536743e-07)
+shape = SubResource("RectangleShape2D_1yxmc")
+debug_color = Color(0.9913456, 0, 0.27275726, 0.41960785)
+
+[node name="WaterDroplets" parent="HumanRig" index="4"]
+process_material = SubResource("ParticleProcessMaterial_jx6hy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.1620235)
+shape = SubResource("CapsuleShape2D_i3mrc")
+debug_color = Color(0.76503086, 0.44407174, 0.1811338, 0.41960785)
+
+[node name="SittingShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 18.322409)
+shape = SubResource("CapsuleShape2D_cct75")
+disabled = true
+debug_color = Color(0.76503086, 0.44407174, 0.1811338, 0.41960785)
+
+[node name="LayingShape" type="CollisionShape2D" parent="."]
+position = Vector2(0.0016651154, 30.01468)
+shape = SubResource("RectangleShape2D_cct75")
+disabled = true
+debug_color = Color(0.76503086, 0.44407174, 0.1811338, 0.41960785)
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("2_b8f3i")
+character = NodePath("..")
+speed = 66.0
+sprint_speed = 185.0
+acceleration = 250.0
+deceleration = 700.0
+metadata/_custom_type_script = "uid://bug7mg8yn3ocw"
+
+[node name="Stamina" type="Node" parent="." node_paths=PackedStringArray("character", "movement")]
+script = ExtResource("12_q7wxt")
+character = NodePath("..")
+movement = NodePath("../Movement")
+metadata/_custom_type_script = "uid://vk45hvtnghxh"
+
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("character", "movement", "stamina")]
+script = ExtResource("13_qfsuc")
+character = NodePath("..")
+movement = NodePath("../Movement")
+stamina = NodePath("../Stamina")
+metadata/_custom_type_script = "uid://ctirshhglayxg"
+
+[node name="Actions" type="Node" parent="." node_paths=PackedStringArray("character", "movement", "human_rig")]
+script = ExtResource("14_6qqpw")
+character = NodePath("..")
+movement = NodePath("../Movement")
+human_rig = NodePath("../HumanRig")
+metadata/_custom_type_script = "uid://b7mba1m3k538f"
+
+[node name="Sex" type="Node" parent="." node_paths=PackedStringArray("character", "movement", "stamina")]
+script = ExtResource("15_k7txb")
+character = NodePath("..")
+movement = NodePath("../Movement")
+stamina = NodePath("../Stamina")
+metadata/_custom_type_script = "uid://bs5fmpn8my8i3"
+
+[node name="HumanAI" type="Node" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("4_1yxmc")
+character = NodePath("..")
+metadata/_custom_type_script = "uid://bpwq2gl546uno"
+
+[node name="Interactable" parent="." node_paths=PackedStringArray("collision_shape_copy") instance=ExtResource("4_cct75")]
+z_index = -1
+position = Vector2(0, 36)
+collision_shape_copy = NodePath("../CollisionShape2D")
+
+[editable path="HumanRig"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ggvitrkoqdkc"]
+
+[ext_resource type="Script" uid="uid://djm0b2dlm8tq7" path="res://UI/ArousalEffect/ArousalEffect.gd" id="1_6hka0"]
+[ext_resource type="Shader" uid="uid://ce05jid41ruqr" path="res://UI/ArousalEffect/ArousalEffect.gdshader" id="1_6xgye"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_grp2s"]
+shader = ExtResource("1_6xgye")
+shader_parameter/effect_intensity = 0.0
+shader_parameter/radius = 0.50000002375
+shader_parameter/softness = 0.35
+shader_parameter/vignette_color = Color(0.7741124, 0.27480018, 0.5170123, 1)
+
+[node name="ArousalEffect" type="ColorRect"]
+material = SubResource("ShaderMaterial_grp2s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6hka0")

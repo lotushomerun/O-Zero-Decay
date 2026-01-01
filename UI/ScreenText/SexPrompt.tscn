@@ -1,0 +1,135 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4jxp452k6k8b"]
+
+[ext_resource type="PackedScene" uid="uid://d2u73887ni6e2" path="res://UI/Keyboard/KeyIcon.tscn" id="1_mrg33"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jtgx"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrg33"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipg7c"]
+bg_color = Color(0.88, 0.44, 0.6673334, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oy0c"]
+bg_color = Color(0.9098039, 0.3019608, 0.30980393, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[node name="WrestlingPrompt" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -22.0
+offset_right = 89.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="KeyIcon" parent="VBox/HBox" instance=ExtResource("1_mrg33")]
+layout_mode = 2
+mouse_filter = 2
+blinking_speed = 0.1
+
+[node name="Label" type="Label" parent="VBox/HBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 13
+text = "SMASH to thrust!"
+
+[node name="TopBar" type="ProgressBar" parent="VBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1jtgx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mrg33")
+show_percentage = false
+
+[node name="BottomBar" type="ProgressBar" parent="VBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1jtgx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ipg7c")
+show_percentage = false
+
+[node name="ResistanceBar" type="ProgressBar" parent="VBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1jtgx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5oy0c")
+show_percentage = false
+
+[node name="EmptySpace" type="ColorRect" parent="VBox"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TopLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.49019608)
+layout_mode = 0
+offset_left = 97.0
+offset_top = -44.0
+offset_right = 118.0
+offset_bottom = -28.0
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 11
+text = "Top"
+
+[node name="BottomLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.49019608)
+layout_mode = 0
+offset_left = 97.0
+offset_top = -32.0
+offset_right = 133.0
+offset_bottom = -16.0
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 11
+text = "Bottom"
+
+[node name="ResistanceLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.49019608)
+layout_mode = 0
+offset_left = 97.0
+offset_top = -20.0
+offset_right = 133.0
+offset_bottom = -4.0
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 11
+text = "Resistance"

@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://bguysu4d6ne50"]
+
+[ext_resource type="Texture2D" uid="uid://ceik0f87mp11e" path="res://UI/Status/Icons/BadPhysique.png" id="1_vbvcc"]
+[ext_resource type="Script" uid="uid://df2130w7k4jck" path="res://UI/Status/UIStatus.gd" id="2_nsmtf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bo1l"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_right = 8
+
+[node name="UIStatus" type="TextureRect"]
+modulate = Color(1, 1, 1, 0.33)
+texture_filter = 1
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 0
+texture = ExtResource("1_vbvcc")
+stretch_mode = 2
+script = ExtResource("2_nsmtf")
+
+[node name="TitlePanel" type="PanelContainer" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.39215687)
+texture_filter = 2
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 53.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5bo1l")
+
+[node name="Margin" type="MarginContainer" parent="TitlePanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="Title" type="Label" parent="TitlePanel/Margin"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 12
+text = "Null"
+
+[node name="DescPanel" type="PanelContainer" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.39215687)
+texture_filter = 2
+layout_mode = 0
+offset_top = 53.0
+offset_right = 151.0
+offset_bottom = 74.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5bo1l")
+
+[node name="Margin" type="MarginContainer" parent="DescPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="Desc" type="Label" parent="DescPanel/Margin"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 12
+text = "Something very unqiue..."
+
+[connection signal="mouse_entered" from="." to="." method="_on_icon_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_icon_mouse_exited"]

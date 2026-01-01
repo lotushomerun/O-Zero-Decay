@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1bdocmt55ut5"]
+
+[ext_resource type="Script" uid="uid://bwkl0bf40cmt6" path="res://UI/Inventory/InventoryEntry.gd" id="1_6g8fj"]
+[ext_resource type="StyleBox" uid="uid://d1qbakg5v4s8v" path="res://UI/Inventory/EntryStyle1.tres" id="2_isduq"]
+[ext_resource type="StyleBox" uid="uid://chsw2ycydgomr" path="res://UI/Inventory/EntryStyle2.tres" id="3_etvun"]
+[ext_resource type="StyleBox" uid="uid://lxl7uehmgrqr" path="res://UI/Inventory/EntryStyleHovered.tres" id="4_mh5v0"]
+[ext_resource type="PackedScene" uid="uid://bsx5foao7kbaf" path="res://UI/Inventory/InventoryGhost.tscn" id="5_etvun"]
+[ext_resource type="AudioStream" uid="uid://dboci45dwqglw" path="res://Sounds/UI/UIHover.ogg" id="5_mh5v0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdlre"]
+
+[node name="InventoryEntry" type="RichTextLabel"]
+clip_contents = false
+custom_minimum_size = Vector2(170, 12)
+theme_override_colors/default_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cdlre")
+bbcode_enabled = true
+text = "• White Panties (1)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("1_6g8fj")
+style1 = ExtResource("2_isduq")
+style2 = ExtResource("3_etvun")
+style_hovered = ExtResource("4_mh5v0")
+hover_sound = ExtResource("5_mh5v0")
+drag_preview_scene = ExtResource("5_etvun")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

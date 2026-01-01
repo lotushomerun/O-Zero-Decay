@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://csl5c0rataliv"]
+
+[ext_resource type="Texture2D" uid="uid://ci6b4a1801nwa" path="res://Interactable/Objects/Box/Box.png" id="1_rvbaj"]
+[ext_resource type="Texture2D" uid="uid://3gouxe8loi15" path="res://UI/Inventory/Arrow.png" id="3_1whmm"]
+[ext_resource type="Script" uid="uid://c6gx7lusevbs8" path="res://UI/Inventory/InventoryContainer.gd" id="3_1xxfo"]
+[ext_resource type="Script" uid="uid://l3nihd2vejbw" path="res://Interactable/Objects/ContainerObj.gd" id="3_oheol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipdw7"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oheol"]
+
+[node name="Box" type="Area2D"]
+z_index = -5
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_rvbaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ipdw7")
+debug_color = Color(0.6793328, 0.47825134, 0.44872856, 0.41960785)
+
+[node name="InventoryContainer" type="Node" parent="."]
+script = ExtResource("3_1xxfo")
+max_size = 20
+metadata/_custom_type_script = "uid://c6gx7lusevbs8"
+
+[node name="Box" type="Area2D" parent="." node_paths=PackedStringArray("inventory_container", "collision_shape_copy")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_oheol")
+inventory_container = NodePath("../InventoryContainer")
+entity_name = "box"
+entity_desc = "There might be something stored inside..."
+collision_shape_copy = NodePath("../CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+shape = SubResource("CircleShape2D_oheol")
+debug_color = Color(0.32921392, 0.61151665, 0.35749662, 0.41960785)
+
+[node name="Arrow" type="Sprite2D" parent="Box"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -11.725323)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_1whmm")

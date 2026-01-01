@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ClothesData" load_steps=4 format=3 uid="uid://bdihhv1ivo5de"]
+
+[ext_resource type="Script" uid="uid://dg34ec6ds73wt" path="res://Interactable/Items/Clothes/ClothesData.gd" id="1_2v023"]
+[ext_resource type="Texture2D" uid="uid://c3blljxn0hwkj" path="res://Interactable/Items/Clothes/Sneakers/Sneakers.png" id="1_ktb8d"]
+[ext_resource type="Texture2D" uid="uid://kwvifcxkc4q4" path="res://Interactable/Items/Clothes/DiscardedClothes.png" id="2_lt4ok"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_2v023")
+clothes_type = 7
+clothes_name = "sneakers"
+discarded_icon = ExtResource("2_lt4ok")
+boobs_icon = ExtResource("1_ktb8d")
+no_boobs_icon = ExtResource("1_ktb8d")
+metadata/_custom_type_script = "uid://dg34ec6ds73wt"

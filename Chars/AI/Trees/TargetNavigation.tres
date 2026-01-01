@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="BehaviorTreeResource" load_steps=18 format=3 uid="uid://mk7ahwejegau"]
+
+[ext_resource type="Script" uid="uid://c2vdhhdphidbq" path="res://Addons/BehaviorTree/Nodes/BehaviorNode.gd" id="1_sw6na"]
+[ext_resource type="Script" uid="uid://bd1f7t0tp1jft" path="res://Addons/BehaviorTree/Nodes/BehaviorCall.gd" id="2_y0fce"]
+[ext_resource type="Script" uid="uid://c1j2l1l2rhrpt" path="res://Addons/BehaviorTree/Nodes/BehaviorCondition.gd" id="3_gmfy5"]
+[ext_resource type="Script" uid="uid://bk7jwn8hmilnh" path="res://Addons/BehaviorTree/Nodes/BehaviorReturn.gd" id="4_siqcu"]
+[ext_resource type="Script" uid="uid://tfldxb83ledq" path="res://Addons/BehaviorTree/Nodes/BehaviorSubTree.gd" id="5_ou776"]
+[ext_resource type="Resource" uid="uid://dampo655suid2" path="res://Chars/AI/Trees/LookAtTarget.tres" id="6_och24"]
+[ext_resource type="Script" uid="uid://d2bpb5e1wn48x" path="res://Addons/BehaviorTree/Nodes/BehaviorOutput.gd" id="7_6nod3"]
+[ext_resource type="Script" uid="uid://crfasmjrx7jg6" path="res://Addons/BehaviorTree/Nodes/BehaviorTreeResource.gd" id="8_x4uvv"]
+
+[sub_resource type="Resource" id="Resource_dm7nj"]
+script = ExtResource("2_y0fce")
+expression_text = "{movement}.set(\"direction\", {v2_zero})"
+saved_position = Vector2(1167.8894, -7.6796336)
+custom_name = "Stop"
+base_name = "Call"
+
+[sub_resource type="Resource" id="Resource_5wa8t"]
+script = ExtResource("2_y0fce")
+expression_text = "{movement}.set(\"direction\", {v2_left})"
+saved_position = Vector2(1503.7893, 74.651375)
+custom_name = "Go Left"
+base_name = "Call"
+
+[sub_resource type="Resource" id="Resource_0j2ni"]
+script = ExtResource("2_y0fce")
+expression_text = "{movement}.set(\"direction\", {v2_right})"
+saved_position = Vector2(1503.4321, 133.89307)
+custom_name = "Go Right"
+base_name = "Call"
+
+[sub_resource type="Resource" id="Resource_3nb2p"]
+script = ExtResource("3_gmfy5")
+expression_text = "{character}.global_position.x > {target}.global_position.x"
+true_node = SubResource("Resource_5wa8t")
+false_node = SubResource("Resource_0j2ni")
+children = Array[ExtResource("1_sw6na")]([SubResource("Resource_5wa8t"), SubResource("Resource_0j2ni")])
+saved_position = Vector2(1164.627, 78.73385)
+custom_name = "Target Left?"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_p7tob"]
+script = ExtResource("3_gmfy5")
+expression_text = "abs({character}.global_position.x - {target}.global_position.x) <= {move_distance_halt}"
+true_node = SubResource("Resource_dm7nj")
+false_node = SubResource("Resource_3nb2p")
+children = Array[ExtResource("1_sw6na")]([SubResource("Resource_dm7nj"), SubResource("Resource_3nb2p")])
+saved_position = Vector2(663.64355, -9.519145)
+custom_name = "Close Enough?"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_rte5s"]
+script = ExtResource("4_siqcu")
+is_failure = true
+saved_position = Vector2(667.1449, 106.17388)
+base_name = "Return"
+
+[sub_resource type="Resource" id="Resource_sl8by"]
+script = ExtResource("3_gmfy5")
+expression_text = "is_instance_valid({target})"
+true_node = SubResource("Resource_p7tob")
+false_node = SubResource("Resource_rte5s")
+children = Array[ExtResource("1_sw6na")]([SubResource("Resource_p7tob"), SubResource("Resource_rte5s")])
+saved_position = Vector2(412.3336, -3.6352513)
+custom_name = "Exists?"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_7ooio"]
+script = ExtResource("5_ou776")
+tree_resource = ExtResource("6_och24")
+children = Array[ExtResource("1_sw6na")]([SubResource("Resource_sl8by")])
+saved_position = Vector2(133.45856, 2.5009966)
+custom_name = "Look At"
+base_name = "SubTree"
+
+[sub_resource type="Resource" id="Resource_s1rgi"]
+script = ExtResource("7_6nod3")
+children = Array[ExtResource("1_sw6na")]([SubResource("Resource_7ooio")])
+base_name = "Output"
+
+[resource]
+script = ExtResource("8_x4uvv")
+root = SubResource("Resource_s1rgi")
+metadata/_custom_type_script = "uid://crfasmjrx7jg6"

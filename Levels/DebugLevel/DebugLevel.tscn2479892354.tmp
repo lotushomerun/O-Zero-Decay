@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://nsmcn7wmdijd"]
+
+[ext_resource type="Script" uid="uid://c5o7o63qpw4pe" path="res://Levels/Level/Level.gd" id="1_xil2r"]
+[ext_resource type="PackedScene" uid="uid://dyfjp3m0r1anq" path="res://Player/Player.tscn" id="2_vbe3p"]
+[ext_resource type="Texture2D" uid="uid://cnt5tlqlkup" path="res://Levels/DebugLevel/Checkered.png" id="2_vel0m"]
+[ext_resource type="PackedScene" uid="uid://bk04s8j8tqipt" path="res://Objects/Stone/Stone.tscn" id="4_vbe3p"]
+[ext_resource type="PackedScene" uid="uid://dqxm0hmwnpye8" path="res://Items/Backpack/BackpackItem.tscn" id="14_4i2cl"]
+[ext_resource type="PackedScene" uid="uid://csl5c0rataliv" path="res://Objects/Box/Box.tscn" id="15_ljaqd"]
+
+[sub_resource type="Gradient" id="Gradient_vbe3p"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vel0m"]
+gradient = SubResource("Gradient_vbe3p")
+fill_from = Vector2(1, 0.03125)
+metadata/_snap_enabled = true
+metadata/_snap_count = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4nni"]
+size = Vector2(1536, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbe3p"]
+size = Vector2(256, 1024)
+
+[node name="DebugLevel" type="Node2D"]
+script = ExtResource("1_xil2r")
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color(0.0142752165, 0.014275219, 0.014275211, 1)
+z_index = -32
+texture_filter = 1
+offset_left = -1024.0
+offset_top = -512.0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(512, 512)
+texture = ExtResource("2_vel0m")
+stretch_mode = 1
+
+[node name="Stone" parent="." instance=ExtResource("4_vbe3p")]
+position = Vector2(148, 24)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Ground" type="TextureRect" parent="Ground"]
+modulate = Color(0.21230468, 0.21230489, 0.21230483, 1)
+z_index = -32
+texture_filter = 1
+offset_left = -768.0
+offset_top = 32.0
+offset_right = 768.0
+offset_bottom = 416.0
+texture = ExtResource("2_vel0m")
+stretch_mode = 1
+
+[node name="ColorRect" type="TextureRect" parent="Ground"]
+offset_left = -1527.0
+offset_top = 32.0
+offset_right = 1522.0
+offset_bottom = 633.0
+texture = SubResource("GradientTexture2D_vel0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 224)
+shape = SubResource("RectangleShape2D_k4nni")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="WallLeft" type="TextureRect" parent="Walls"]
+modulate = Color(0.21230468, 0.21230489, 0.21230483, 1)
+z_index = -32
+texture_filter = 1
+offset_left = -1280.0
+offset_top = -608.0
+offset_right = -768.0
+offset_bottom = 416.0
+texture = ExtResource("2_vel0m")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-896, -96)
+shape = SubResource("RectangleShape2D_vbe3p")
+
+[node name="WallRight" type="TextureRect" parent="Walls"]
+modulate = Color(0.21230468, 0.21230489, 0.21230483, 1)
+z_index = -32
+texture_filter = 1
+offset_left = 768.0
+offset_top = -608.0
+offset_right = 1280.0
+offset_bottom = 416.0
+texture = ExtResource("2_vel0m")
+stretch_mode = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(896, -96)
+shape = SubResource("RectangleShape2D_vbe3p")
+
+[node name="Player" parent="." instance=ExtResource("2_vbe3p")]
+position = Vector2(0, -6)
+
+[node name="BackpackItem" parent="." instance=ExtResource("14_4i2cl")]
+position = Vector2(-62, 32)
+
+[node name="Box" parent="." instance=ExtResource("15_ljaqd")]
+position = Vector2(90, 16)

@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="BehaviorTreeResource" load_steps=15 format=3 uid="uid://1k62plhbj5vr"]
+
+[ext_resource type="Script" uid="uid://c2vdhhdphidbq" path="res://Addons/BehaviorTree/Nodes/BehaviorNode.gd" id="1_g63fn"]
+[ext_resource type="Script" uid="uid://d2bpb5e1wn48x" path="res://Addons/BehaviorTree/Nodes/BehaviorOutput.gd" id="2_40mny"]
+[ext_resource type="Script" uid="uid://bd1f7t0tp1jft" path="res://Addons/BehaviorTree/Nodes/BehaviorCall.gd" id="2_dhsuu"]
+[ext_resource type="Script" uid="uid://c1j2l1l2rhrpt" path="res://Addons/BehaviorTree/Nodes/BehaviorCondition.gd" id="2_khipm"]
+[ext_resource type="Script" uid="uid://crfasmjrx7jg6" path="res://Addons/BehaviorTree/Nodes/BehaviorTreeResource.gd" id="3_khipm"]
+[ext_resource type="Script" uid="uid://tfldxb83ledq" path="res://Addons/BehaviorTree/Nodes/BehaviorSubTree.gd" id="4_r58bd"]
+[ext_resource type="Resource" uid="uid://b16a5wosan5lx" path="res://Chars/AI/Trees/LookInDirection.tres" id="5_633th"]
+
+[sub_resource type="Resource" id="Resource_r58bd"]
+script = ExtResource("2_dhsuu")
+expression_text = "{movement}.set(\"direction\", {v2_right})"
+saved_position = Vector2(910.2997, 14.149948)
+custom_name = "Go Right"
+base_name = "Call"
+
+[sub_resource type="Resource" id="Resource_633th"]
+script = ExtResource("2_dhsuu")
+expression_text = "{movement}.set(\"direction\", {v2_left})"
+saved_position = Vector2(911.54224, 72.32268)
+custom_name = "Go Left"
+base_name = "Call"
+
+[sub_resource type="Resource" id="Resource_40mny"]
+script = ExtResource("2_khipm")
+expression_text = "{target_dir} == 1"
+true_node = SubResource("Resource_r58bd")
+false_node = SubResource("Resource_633th")
+children = Array[ExtResource("1_g63fn")]([SubResource("Resource_r58bd"), SubResource("Resource_633th")])
+saved_position = Vector2(659.98883, -6.1064477)
+custom_name = "Going Right"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_2t06y"]
+script = ExtResource("2_dhsuu")
+expression_text = "{movement}.set(\"direction\", {v2_zero})"
+saved_position = Vector2(650.7872, 122.61594)
+custom_name = "Stop"
+base_name = "Call"
+
+[sub_resource type="Resource" id="Resource_dhsuu"]
+script = ExtResource("2_khipm")
+expression_text = "{target_dir} != 0"
+true_node = SubResource("Resource_40mny")
+false_node = SubResource("Resource_2t06y")
+children = Array[ExtResource("1_g63fn")]([SubResource("Resource_40mny"), SubResource("Resource_2t06y")])
+saved_position = Vector2(421.8523, -5.5854816)
+custom_name = "Have Direction?"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_lisgf"]
+script = ExtResource("4_r58bd")
+tree_resource = ExtResource("5_633th")
+children = Array[ExtResource("1_g63fn")]([SubResource("Resource_dhsuu")])
+saved_position = Vector2(129.59657, 0.13766964)
+base_name = "SubTree"
+
+[sub_resource type="Resource" id="Resource_tqiqc"]
+script = ExtResource("2_40mny")
+children = Array[ExtResource("1_g63fn")]([SubResource("Resource_lisgf")])
+base_name = "Output"
+
+[resource]
+script = ExtResource("3_khipm")
+root = SubResource("Resource_tqiqc")
+metadata/_custom_type_script = "uid://crfasmjrx7jg6"

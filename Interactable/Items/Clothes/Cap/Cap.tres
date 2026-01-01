@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ClothesData" load_steps=4 format=3 uid="uid://mrs26swte5mc"]
+
+[ext_resource type="Texture2D" uid="uid://bj40ar1nya3lx" path="res://Interactable/Items/Clothes/Cap/Cap.png" id="1_3ol22"]
+[ext_resource type="Script" uid="uid://dg34ec6ds73wt" path="res://Interactable/Items/Clothes/ClothesData.gd" id="1_37mpc"]
+[ext_resource type="Texture2D" uid="uid://kwvifcxkc4q4" path="res://Interactable/Items/Clothes/DiscardedClothes.png" id="2_dxyfh"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_37mpc")
+clothes_name = "cap"
+clothes_desc = "A regular baseball cap."
+discarded_icon = ExtResource("2_dxyfh")
+boobs_icon = ExtResource("1_3ol22")
+no_boobs_icon = ExtResource("1_3ol22")
+metadata/_custom_type_script = "uid://dg34ec6ds73wt"

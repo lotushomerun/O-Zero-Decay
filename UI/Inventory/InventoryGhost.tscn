@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsx5foao7kbaf"]
+
+[ext_resource type="Texture2D" uid="uid://d4ici87c48ijh" path="res://UI/Inventory/DottedSlot.png" id="1_ao5s8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w5hx7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_ao5s8")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="InventoryGhost" type="Label"]
+modulate = Color(1, 1, 1, 0.49019608)
+offset_right = 31.0
+offset_bottom = 22.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxTexture_w5hx7")
+text = "item"
+horizontal_alignment = 1

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ClothesData" load_steps=4 format=3 uid="uid://uli7gur4h5ih"]
+
+[ext_resource type="Script" uid="uid://dg34ec6ds73wt" path="res://Interactable/Items/Clothes/ClothesData.gd" id="1_jjj3b"]
+[ext_resource type="Texture2D" uid="uid://4th44x67sa8l" path="res://Interactable/Items/Clothes/PlainPanties/Panties.png" id="1_lvweg"]
+[ext_resource type="Texture2D" uid="uid://kwvifcxkc4q4" path="res://Interactable/Items/Clothes/DiscardedClothes.png" id="2_78qak"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_jjj3b")
+clothes_type = 9
+clothes_name = "plain panties"
+discarded_icon = ExtResource("2_78qak")
+boobs_icon = ExtResource("1_lvweg")
+no_boobs_icon = ExtResource("1_lvweg")
+metadata/_custom_type_script = "uid://dg34ec6ds73wt"

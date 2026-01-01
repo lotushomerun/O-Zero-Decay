@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://idelamry44ja"]
+
+[ext_resource type="Texture2D" uid="uid://h5h4ydfu0fv2" path="res://Effects/Cum/CumAtlas.png" id="1_sgfub"]
+
+[node name="CumSplat" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_sgfub")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 8)

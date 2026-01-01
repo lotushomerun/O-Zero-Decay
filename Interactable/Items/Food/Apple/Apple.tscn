@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://wptp81vqn41l"]
+
+[ext_resource type="Shader" uid="uid://bwr57161wjo08" path="res://Interactable/Items/Clothes/Clothes.gdshader" id="1_ydaub"]
+[ext_resource type="Texture2D" uid="uid://m27xoah7ock1" path="res://Interactable/Items/Clothes/DirtMask.tres" id="2_xe1iv"]
+[ext_resource type="Texture2D" uid="uid://dotfwywalle5a" path="res://Interactable/Items/Clothes/DirtTexture.tres" id="3_2563f"]
+[ext_resource type="Texture2D" uid="uid://b43mk623objen" path="res://Interactable/Items/Food/Apple/Apple.png" id="4_37rs2"]
+[ext_resource type="Script" uid="uid://dlbufoww4ko6t" path="res://Interactable/Items/Food/FoodItem.gd" id="5_2563f"]
+[ext_resource type="Texture2D" uid="uid://3gouxe8loi15" path="res://UI/Inventory/Arrow.png" id="6_37rs2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8d7so"]
+resource_local_to_scene = true
+shader = ExtResource("1_ydaub")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("2_xe1iv")
+shader_parameter/dirt_texture = ExtResource("3_2563f")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij8rm"]
+size = Vector2(12, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8d7so"]
+
+[node name="Apple" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_8d7so")
+position = Vector2(0, -5)
+texture = ExtResource("4_37rs2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_ij8rm")
+
+[node name="FoodItem" type="Area2D" parent="." node_paths=PackedStringArray("sprite2d", "collision_shape_copy")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("5_2563f")
+sprite2d = NodePath("../Sprite2D")
+satiation = 30.0
+entity_name = "apple"
+entity_desc = "An apple a day... keeps the doctor away!"
+collision_shape_copy = NodePath("../CollisionShape2D")
+metadata/_custom_type_script = "uid://dlbufoww4ko6t"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodItem"]
+shape = SubResource("CircleShape2D_8d7so")
+debug_color = Color(0.32921392, 0.61151665, 0.35749662, 0.41960785)
+
+[node name="Arrow" type="Sprite2D" parent="FoodItem"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -11.725323)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_37rs2")

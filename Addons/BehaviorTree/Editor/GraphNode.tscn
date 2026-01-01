@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci3bb4r78yvgm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxip6"]
+bg_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+border_color = Color(0.050980393, 0.05882353, 0.07058824, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[node name="GraphNode" type="GraphNode"]
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_lxip6")
+title = "Node"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="Info" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Info"
+horizontal_alignment = 1

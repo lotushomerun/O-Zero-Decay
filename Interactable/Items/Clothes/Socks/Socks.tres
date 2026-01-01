@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ClothesData" load_steps=4 format=3 uid="uid://du7iug08vyo2j"]
+
+[ext_resource type="Script" uid="uid://dg34ec6ds73wt" path="res://Interactable/Items/Clothes/ClothesData.gd" id="1_vm4iv"]
+[ext_resource type="Texture2D" uid="uid://c86kxrsggx763" path="res://Interactable/Items/Clothes/Socks/Socks.png" id="1_xbw4c"]
+[ext_resource type="Texture2D" uid="uid://kwvifcxkc4q4" path="res://Interactable/Items/Clothes/DiscardedClothes.png" id="2_5xiyt"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_vm4iv")
+clothes_type = 6
+clothes_name = "pair of socks"
+discarded_icon = ExtResource("2_5xiyt")
+boobs_icon = ExtResource("1_xbw4c")
+no_boobs_icon = ExtResource("1_xbw4c")
+metadata/_custom_type_script = "uid://dg34ec6ds73wt"

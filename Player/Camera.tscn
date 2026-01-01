@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhtodg4s8d5q3"]
+
+[ext_resource type="Script" uid="uid://1q1q4x7ow01j" path="res://Player/Camera.gd" id="1_3ehr6"]
+[ext_resource type="PackedScene" uid="uid://cnpw3u5j7a5j6" path="res://UI/Canvas.tscn" id="1_lfj7s"]
+[ext_resource type="AudioStream" uid="uid://cf07fnur547tb" path="res://Sounds/Ambient/Rain.ogg" id="3_1c7pm"]
+[ext_resource type="AudioStream" uid="uid://pihantkj2v1l" path="res://Sounds/Ambient/WindLoop.ogg" id="4_gnilo"]
+[ext_resource type="Shader" uid="uid://caynm1llai8m7" path="res://Effects/Sky/Sky.gdshader" id="4_pd5lc"]
+[ext_resource type="Texture2D" uid="uid://37mhl26dr54g" path="res://Effects/Sky/Clouds.png" id="5_osukm"]
+[ext_resource type="Texture2D" uid="uid://wd3udow75omv" path="res://Effects/Sky/RainClouds.png" id="6_1tp5x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osukm"]
+shader = ExtResource("4_pd5lc")
+shader_parameter/top_color = Color(0.043137256, 0.23921569, 0.7019608, 1)
+shader_parameter/bottom_color = Color(0.28235295, 0.5058824, 0.72156864, 1)
+shader_parameter/time_tint = Color(1, 1, 1, 1)
+shader_parameter/horizon_glow = -0.1
+shader_parameter/vignette_strength = 0.25
+shader_parameter/gradient_curve = 1.2
+
+[node name="Camera" type="Camera2D"]
+zoom = Vector2(2.33, 2.33)
+script = ExtResource("1_3ehr6")
+
+[node name="Canvas" parent="." instance=ExtResource("1_lfj7s")]
+
+[node name="RainLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1c7pm")
+volume_db = -80.0
+
+[node name="WindLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gnilo")
+volume_db = -50.0
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+
+[node name="Sky" type="ColorRect" parent="."]
+z_index = -50
+z_as_relative = false
+material = SubResource("ShaderMaterial_osukm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -329.0
+offset_top = -165.0
+offset_right = 321.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Darkness" type="ColorRect" parent="."]
+z_index = 999
+offset_left = -329.0
+offset_top = -165.0
+offset_right = 321.0
+offset_bottom = 165.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Clouds" type="Parallax2D" parent="."]
+z_index = -50
+z_as_relative = false
+scroll_scale = Vector2(0.1, 1)
+scroll_offset = Vector2(0, -128)
+repeat_size = Vector2(704, 0)
+autoscroll = Vector2(5, 0)
+repeat_times = 6
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds"]
+texture_filter = 1
+position = Vector2(0, -17)
+texture = ExtResource("5_osukm")
+
+[node name="RainClouds" type="Parallax2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = -50
+z_as_relative = false
+scroll_scale = Vector2(0.33, 1)
+scroll_offset = Vector2(0, -128)
+repeat_size = Vector2(704, 0)
+autoscroll = Vector2(5, 0)
+repeat_times = 6
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RainClouds"]
+texture_filter = 1
+position = Vector2(0, -1)
+texture = ExtResource("6_1tp5x")

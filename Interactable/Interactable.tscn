@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cppafblbtmmm8"]
+
+[ext_resource type="Script" uid="uid://ds2ly5753ls0o" path="res://Interactable/Interactable.gd" id="2_0bn8r"]
+[ext_resource type="Texture2D" uid="uid://3gouxe8loi15" path="res://UI/Inventory/Arrow.png" id="3_0bn8r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dljwh"]
+
+[node name="Interactable" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_0bn8r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dljwh")
+debug_color = Color(0.32921392, 0.61151665, 0.35749662, 0.41960785)
+
+[node name="Arrow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -11.725323)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0bn8r")

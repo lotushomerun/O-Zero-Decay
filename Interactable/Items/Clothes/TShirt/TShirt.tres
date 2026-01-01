@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ClothesData" load_steps=5 format=3 uid="uid://dpho4t0y42wb"]
+
+[ext_resource type="Texture2D" uid="uid://kwvifcxkc4q4" path="res://Interactable/Items/Clothes/DiscardedClothes.png" id="1_b7lre"]
+[ext_resource type="Texture2D" uid="uid://c15qdmi4frq8i" path="res://Interactable/Items/Clothes/TShirt/Breasts.png" id="1_bectc"]
+[ext_resource type="Script" uid="uid://dg34ec6ds73wt" path="res://Interactable/Items/Clothes/ClothesData.gd" id="1_y33nh"]
+[ext_resource type="Texture2D" uid="uid://cvb1h5wbofv2l" path="res://Interactable/Items/Clothes/TShirt/NoBreasts.png" id="3_u256k"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_y33nh")
+clothes_type = 3
+clothes_name = "t-shirt"
+discarded_icon = ExtResource("1_b7lre")
+boobs_icon = ExtResource("1_bectc")
+no_boobs_icon = ExtResource("3_u256k")
+metadata/_custom_type_script = "uid://dg34ec6ds73wt"

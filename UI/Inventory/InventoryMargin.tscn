@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://dnokvj0s4ummx"]
+
+[ext_resource type="Script" uid="uid://r4maunaocaeu" path="res://UI/Inventory/InventoryManager.gd" id="1_cdlre"]
+[ext_resource type="PackedScene" uid="uid://d1bdocmt55ut5" path="res://UI/Inventory/InventoryEntry.tscn" id="2_nklxk"]
+[ext_resource type="PackedScene" uid="uid://lp0l7q2fsq7y" path="res://UI/Inventory/Inventory.tscn" id="2_qnmuv"]
+[ext_resource type="Texture2D" uid="uid://ck4860rvimjvj" path="res://UI/Misc/DottedHorizontal.png" id="3_nklxk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnmuv"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdlre"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_detail = 5
+shadow_color = Color(0.8, 0.8, 0.8, 0.19607843)
+shadow_size = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tek1"]
+texture = ExtResource("3_nklxk")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nklxk"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 24
+shadow_size = 2
+
+[node name="InventoryMargin" type="MarginContainer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -324.0
+offset_top = -250.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+
+[node name="Inventories" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 2
+script = ExtResource("1_cdlre")
+entry_scene_export = ExtResource("2_nklxk")
+
+[node name="Inventory" type="PanelContainer" parent="Inventories"]
+visible = false
+custom_minimum_size = Vector2(305, 224)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qnmuv")
+
+[node name="Margin" type="MarginContainer" parent="Inventories/Inventory"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Panel" type="PanelContainer" parent="Inventories/Inventory/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cdlre")
+
+[node name="Margin" type="MarginContainer" parent="Inventories/Inventory/Margin/Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Inventories/Inventory/Margin/Panel/Margin"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBox" type="VBoxContainer" parent="Inventories/Inventory/Margin/Panel/Margin/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="HSeparator" type="HSeparator" parent="Inventories/Inventory/Margin/Panel/Margin/ScrollContainer/VBox"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxTexture_0tek1")
+
+[node name="Space" type="Label" parent="Inventories/Inventory/Margin/Panel/Margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 10
+text = "0/10"
+
+[node name="Panel" type="PanelContainer" parent="Inventories"]
+custom_minimum_size = Vector2(320, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nklxk")
+
+[node name="HBox" type="HBoxContainer" parent="Inventories/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Storage" parent="Inventories/Panel/HBox" instance=ExtResource("2_qnmuv")]
+layout_mode = 2
+
+[node name="Backpack" parent="Inventories/Panel/HBox" instance=ExtResource("2_qnmuv")]
+layout_mode = 2
+
+[node name="Inventory" parent="Inventories/Panel/HBox" instance=ExtResource("2_qnmuv")]
+layout_mode = 2
+
+[node name="TimeMargin" type="MarginContainer" parent="Inventories/Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 160
+
+[node name="Time" type="Label" parent="Inventories/Panel/TimeMargin"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "16:00, Monday, 31/12/2008"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnar222h6h3tn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxip6"]
+bg_color = Color(0.2307983, 0.3009362, 0.75341, 1)
+border_color = Color(0.050980393, 0.05882353, 0.07058824, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[node name="GraphNode" type="GraphNode"]
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_lxip6")
+title = "Call"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+placeholder_text = "Expression in gdscript"
+expand_to_text_length = true
+context_menu_enabled = false

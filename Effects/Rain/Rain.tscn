@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://4bxfvh6qm8wg"]
+
+[ext_resource type="Shader" uid="uid://brbkm6i5j0cbh" path="res://Effects/Rain/Rain.gdshader" id="1_5s0wt"]
+[ext_resource type="Texture2D" uid="uid://dwgnkcy4g0ye6" path="res://Effects/Rain/Rain.png" id="2_f06xl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_amjf5"]
+shader = ExtResource("1_5s0wt")
+shader_parameter/rain_speed = 666.000031635
+shader_parameter/rain_color = Color(0.33538887, 0.45775273, 0.70000815, 0)
+shader_parameter/horizontal_shift = 0.0
+
+[node name="Rain" type="TextureRect"]
+material = SubResource("ShaderMaterial_amjf5")
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_f06xl")
+stretch_mode = 1

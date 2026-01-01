@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cox47y3s162or"]
+
+[ext_resource type="Texture2D" uid="uid://kwvifcxkc4q4" path="res://Interactable/Items/Clothes/DiscardedClothes.png" id="1_0tih4"]
+[ext_resource type="Script" uid="uid://de8sl8ilpobca" path="res://Interactable/Items/Clothes/ClothesItem.gd" id="1_8aacx"]
+[ext_resource type="Texture2D" uid="uid://3gouxe8loi15" path="res://UI/Inventory/Arrow.png" id="2_0tih4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tih4"]
+size = Vector2(20, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8aacx"]
+
+[node name="ClothesItem" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -6)
+texture = ExtResource("1_0tih4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_0tih4")
+
+[node name="ClothesItem" type="Area2D" parent="." node_paths=PackedStringArray("sprite2d", "collision_shape_copy")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_8aacx")
+sprite2d = NodePath("../Sprite2D")
+collision_shape_copy = NodePath("../CollisionShape2D")
+metadata/_custom_type_script = "uid://de8sl8ilpobca"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClothesItem"]
+shape = SubResource("CircleShape2D_8aacx")
+debug_color = Color(0.32921392, 0.61151665, 0.35749662, 0.41960785)
+
+[node name="Arrow" type="Sprite2D" parent="ClothesItem"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -11.725323)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0tih4")

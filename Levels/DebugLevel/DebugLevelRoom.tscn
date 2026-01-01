@@ -1,0 +1,138 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtoggp3ip4lo4"]
+
+[ext_resource type="Script" uid="uid://c5o7o63qpw4pe" path="res://Levels/Level/Level.gd" id="1_7od3b"]
+[ext_resource type="Texture2D" uid="uid://cnt5tlqlkup" path="res://Levels/DebugLevel/Checkered.png" id="2_ewcfx"]
+[ext_resource type="PackedScene" uid="uid://dyfjp3m0r1anq" path="res://Player/Player.tscn" id="3_0evg5"]
+[ext_resource type="PackedScene" uid="uid://8y5xiynmhpym" path="res://Interactable/Objects/Door/Door.tscn" id="4_0evg5"]
+
+[sub_resource type="Gradient" id="Gradient_vbe3p"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rbu3x"]
+gradient = SubResource("Gradient_vbe3p")
+fill_from = Vector2(1, 0.03125)
+metadata/_snap_enabled = true
+metadata/_snap_count = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6xob"]
+size = Vector2(256, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7t42j"]
+size = Vector2(256, 1024)
+
+[node name="DebugLevelRoom" type="Node2D"]
+script = ExtResource("1_7od3b")
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color(0.0142752165, 0.014275219, 0.014275211, 1)
+z_index = -32
+texture_filter = 1
+offset_left = 128.0
+offset_top = 414.0
+offset_right = 512.0
+offset_bottom = 479.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(512, 512)
+texture = ExtResource("2_ewcfx")
+stretch_mode = 1
+
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Ground" type="TextureRect" parent="Ground"]
+modulate = Color(0.21230468, 0.21230489, 0.21230483, 1)
+z_index = -32
+texture_filter = 1
+offset_left = -384.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 416.0
+texture = ExtResource("2_ewcfx")
+stretch_mode = 1
+
+[node name="ColorRect" type="TextureRect" parent="Ground"]
+offset_left = -640.0
+offset_top = 32.0
+offset_right = 640.0
+offset_bottom = 633.0
+texture = SubResource("GradientTexture2D_rbu3x")
+
+[node name="ColorRect2" type="TextureRect" parent="Ground"]
+offset_left = -640.0
+offset_top = -699.0
+offset_right = 640.0
+offset_bottom = -98.0
+texture = SubResource("GradientTexture2D_rbu3x")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 224)
+shape = SubResource("RectangleShape2D_m6xob")
+
+[node name="Ground2" type="TextureRect" parent="Ground"]
+modulate = Color(0.21230468, 0.21230489, 0.21230483, 1)
+z_index = -32
+texture_filter = 1
+offset_left = -384.0
+offset_top = -482.0
+offset_right = 384.0
+offset_bottom = -98.0
+texture = ExtResource("2_ewcfx")
+stretch_mode = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, -290)
+shape = SubResource("RectangleShape2D_m6xob")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="WallLeft" type="TextureRect" parent="Walls"]
+modulate = Color(0.21230468, 0.21230489, 0.21230483, 1)
+z_index = -32
+texture_filter = 1
+offset_left = -640.0
+offset_top = -608.0
+offset_right = -128.0
+offset_bottom = 416.0
+texture = ExtResource("2_ewcfx")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-256, -96)
+shape = SubResource("RectangleShape2D_7t42j")
+
+[node name="WallRight" type="TextureRect" parent="Walls"]
+modulate = Color(0.21230468, 0.21230489, 0.21230483, 1)
+z_index = -32
+texture_filter = 1
+offset_left = 128.0
+offset_top = -608.0
+offset_right = 640.0
+offset_bottom = 416.0
+texture = ExtResource("2_ewcfx")
+stretch_mode = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(256, -96)
+shape = SubResource("RectangleShape2D_7t42j")
+
+[node name="Player" parent="." instance=ExtResource("3_0evg5")]
+position = Vector2(0, -4)
+
+[node name="Door" parent="." instance=ExtResource("4_0evg5")]
+position = Vector2(-129, -6)
+
+[node name="Sprite2D" parent="Door" index="0"]
+flip_h = true
+
+[node name="Door" parent="Door" index="2"]
+door_id = "to_hallway"
+door_target_id = "to_room"
+level_to_load = "uid://crkwjynbfivt2"
+facing_right = true
+entity_id = "c589b11204f04954"
+
+[editable path="Door"]

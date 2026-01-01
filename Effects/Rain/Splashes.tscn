@@ -1,0 +1,28 @@
+[gd_scene load_steps=12 format=3 uid="uid://u4j448rmc4lf"]
+
+[ext_resource type="Shader" uid="uid://c710f0sclhxue" path="res://Effects/Rain/RainSplash.gdshader" id="1_jckmr"]
+[ext_resource type="Texture2D" uid="uid://bqcxjmcsyoeyd" path="res://Effects/Rain/RainSplash1.png" id="2_cbs1r"]
+[ext_resource type="Script" uid="uid://d2ar40v044idh" path="res://Effects/Rain/RainSplash.gd" id="3_l8od6"]
+[ext_resource type="Texture2D" uid="uid://b6v4nmopx72xu" path="res://Effects/Rain/RainSplash2.png" id="4_1ho1m"]
+[ext_resource type="Texture2D" uid="uid://cbt10gccpksvh" path="res://Effects/Rain/RainSplash3.png" id="5_l0rp3"]
+[ext_resource type="Texture2D" uid="uid://rbw3u6kp4x4f" path="res://Effects/Rain/RainSplash4.png" id="6_vg7x6"]
+[ext_resource type="Texture2D" uid="uid://dnk1781661mdj" path="res://Effects/Rain/RainSplash5.png" id="7_yqetj"]
+[ext_resource type="Texture2D" uid="uid://b8gm2w01kys6k" path="res://Effects/Rain/RainSplash6.png" id="8_aelpb"]
+[ext_resource type="Texture2D" uid="uid://b2mht0dm0yowp" path="res://Effects/Rain/RainSplash7.png" id="9_yo7kq"]
+[ext_resource type="Texture2D" uid="uid://honl2nyhalqo" path="res://Effects/Rain/RainSplash8.png" id="10_gbink"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gb20t"]
+shader = ExtResource("1_jckmr")
+shader_parameter/rain_color = Color(0.343, 0.46200004, 0.7, 0.19607843)
+
+[node name="Splashes" type="TextureRect"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_gb20t")
+offset_right = 32.0
+offset_bottom = 6.0
+mouse_filter = 2
+texture = ExtResource("8_aelpb")
+stretch_mode = 1
+script = ExtResource("3_l8od6")
+frames = Array[Texture2D]([ExtResource("2_cbs1r"), ExtResource("4_1ho1m"), ExtResource("5_l0rp3"), ExtResource("6_vg7x6"), ExtResource("7_yqetj"), ExtResource("8_aelpb"), ExtResource("9_yo7kq"), ExtResource("10_gbink")])
+frame_delay = 0.066

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ClothesData" load_steps=4 format=3 uid="uid://cseaitp82xjwg"]
+
+[ext_resource type="Texture2D" uid="uid://dsj2j8enk6nhu" path="res://Interactable/Items/Clothes/Pants/Pants.png" id="1_lxxuk"]
+[ext_resource type="Script" uid="uid://dg34ec6ds73wt" path="res://Interactable/Items/Clothes/ClothesData.gd" id="1_t6ffm"]
+[ext_resource type="Texture2D" uid="uid://kwvifcxkc4q4" path="res://Interactable/Items/Clothes/DiscardedClothes.png" id="2_hfych"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_t6ffm")
+clothes_type = 5
+clothes_name = "pants"
+discarded_icon = ExtResource("2_hfych")
+boobs_icon = ExtResource("1_lxxuk")
+no_boobs_icon = ExtResource("1_lxxuk")
+metadata/_custom_type_script = "uid://dg34ec6ds73wt"

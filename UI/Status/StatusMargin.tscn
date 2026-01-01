@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://li3nula8u4jf"]
+
+[ext_resource type="Script" uid="uid://tefmomtxc2jl" path="res://UI/Status/StatusManager.gd" id="1_7jcht"]
+
+[node name="StatusMargin" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 64)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+script = ExtResource("1_7jcht")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2

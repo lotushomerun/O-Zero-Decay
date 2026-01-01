@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://5t7a8oekn5ng"]
+
+[ext_resource type="Script" uid="uid://5ouivvwnqo76" path="res://UI/Chatbox/Chatbox.gd" id="1_cd6gv"]
+[ext_resource type="AudioStream" uid="uid://ywjj2uurrjto" path="res://Sounds/UI/UICancel.ogg" id="2_7568c"]
+
+[node name="Chatbox" type="MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(512, 384)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -384.0
+offset_right = 512.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+script = ExtResource("1_cd6gv")
+cancel_sound_export = ExtResource("2_7568c")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2

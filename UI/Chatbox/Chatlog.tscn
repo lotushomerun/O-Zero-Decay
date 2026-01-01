@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqpelots1ykhp"]
+
+[ext_resource type="Texture2D" uid="uid://du6786p2fhtcu" path="res://UI/Chatbox/Underscore.png" id="1_7symw"]
+[ext_resource type="Script" uid="uid://c1fpfw06gelm" path="res://UI/Chatbox/Chatlog.gd" id="1_7535u"]
+
+[node name="Chatlog" type="RichTextLabel" node_paths=PackedStringArray("underscore")]
+clip_contents = false
+custom_minimum_size = Vector2(170, 12)
+offset_right = 170.0
+offset_bottom = 18.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/bold_font_size = 13
+theme_override_font_sizes/bold_italics_font_size = 13
+theme_override_font_sizes/italics_font_size = 13
+theme_override_font_sizes/mono_font_size = 13
+bbcode_enabled = true
+text = "Regular | [b]Bold[/b] | [i]Italic[/i]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("1_7535u")
+underscore = NodePath("Underscore")
+
+[node name="Underscore" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_7symw")
+expand_mode = 2

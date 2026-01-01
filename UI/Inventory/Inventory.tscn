@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://lp0l7q2fsq7y"]
+
+[ext_resource type="StyleBox" uid="uid://brniwkj1i4pip" path="res://UI/Inventory/InventoryNormalStyle.tres" id="1_s7jmw"]
+[ext_resource type="Script" uid="uid://bemc2yfxjx4yp" path="res://UI/Inventory/Inventory.gd" id="1_sv8nv"]
+[ext_resource type="StyleBox" uid="uid://cwoj0d1cdm2ej" path="res://UI/Inventory/InventoryPressedStyle.tres" id="2_3o7um"]
+[ext_resource type="AudioStream" uid="uid://dcssptf8xfpte" path="res://Sounds/UI/UIClick.ogg" id="2_gvl8j"]
+[ext_resource type="AudioStream" uid="uid://dboci45dwqglw" path="res://Sounds/UI/UIHover.ogg" id="3_s7jmw"]
+[ext_resource type="AudioStream" uid="uid://dig2frsyv58dw" path="res://Sounds/Effects/Inventory1.ogg" id="4_1lw3x"]
+[ext_resource type="AudioStream" uid="uid://baknu8wqayhub" path="res://Sounds/Effects/Inventory2.ogg" id="5_a5ca2"]
+[ext_resource type="AudioStream" uid="uid://ca45yw04yknym" path="res://Sounds/Effects/Inventory3.ogg" id="6_jtqfj"]
+[ext_resource type="AudioStream" uid="uid://cavup0ox2sdrw" path="res://Sounds/Effects/Inventory4.ogg" id="7_vwafv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvl8j"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.17, 0.17, 0.17, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 2
+
+[node name="Inventory" type="Button"]
+offset_right = 55.0
+offset_bottom = 18.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("1_s7jmw")
+theme_override_styles/pressed = ExtResource("2_3o7um")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gvl8j")
+text = "Inventory"
+script = ExtResource("1_sv8nv")
+inventory_sounds = Array[AudioStream]([ExtResource("4_1lw3x"), ExtResource("5_a5ca2"), ExtResource("6_jtqfj"), ExtResource("7_vwafv")])
+click_sound = ExtResource("2_gvl8j")
+hover_sound = ExtResource("3_s7jmw")
+normal_style = ExtResource("1_s7jmw")
+pressed_style = ExtResource("2_3o7um")
+
+[connection signal="mouse_entered" from="." to="." method="_on_label_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_label_pressed"]

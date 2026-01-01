@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqxm0hmwnpye8"]
+
+[ext_resource type="Shader" uid="uid://bwr57161wjo08" path="res://Interactable/Items/Clothes/Clothes.gdshader" id="1_gmhai"]
+[ext_resource type="Texture2D" uid="uid://10au1ytbaatq" path="res://Interactable/Items/Backpack/Backpack.png" id="1_ofn2f"]
+[ext_resource type="Texture2D" uid="uid://m27xoah7ock1" path="res://Interactable/Items/Clothes/DirtMask.tres" id="2_3r8wl"]
+[ext_resource type="Script" uid="uid://dmfop2hf15e" path="res://Interactable/Items/Backpack/BackpackItem.gd" id="2_cl8s0"]
+[ext_resource type="Texture2D" uid="uid://dotfwywalle5a" path="res://Interactable/Items/Clothes/DirtTexture.tres" id="3_0ei8t"]
+[ext_resource type="Texture2D" uid="uid://3gouxe8loi15" path="res://UI/Inventory/Arrow.png" id="5_gmhai"]
+[ext_resource type="Script" uid="uid://c6gx7lusevbs8" path="res://UI/Inventory/InventoryContainer.gd" id="6_ijg6q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkvo1"]
+resource_local_to_scene = true
+shader = ExtResource("1_gmhai")
+shader_parameter/is_front = true
+shader_parameter/base_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/target_color = Color(0.14, 0.63, 0.8, 1)
+shader_parameter/wetness = 0.0
+shader_parameter/dirt_mask = ExtResource("2_3r8wl")
+shader_parameter/dirt_texture = ExtResource("3_0ei8t")
+shader_parameter/dirt_amount = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofn2f"]
+size = Vector2(12, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3r8wl"]
+
+[node name="BackpackItem" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_pkvo1")
+position = Vector2(0, -8)
+texture = ExtResource("1_ofn2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ofn2f")
+
+[node name="BackpackItem" type="Area2D" parent="." node_paths=PackedStringArray("sprite2d", "inventory_container", "collision_shape_copy")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_cl8s0")
+sprite2d = NodePath("../Sprite2D")
+inventory_container = NodePath("../InventoryContainer")
+primary_name = "backpack"
+can_take = false
+entity_name = "backpack"
+entity_desc = "Fits just enough to be useful."
+collision_shape_copy = NodePath("../CollisionShape2D")
+metadata/_custom_type_script = "uid://dmfop2hf15e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackpackItem"]
+shape = SubResource("CircleShape2D_3r8wl")
+debug_color = Color(0.32921392, 0.61151665, 0.35749662, 0.41960785)
+
+[node name="Arrow" type="Sprite2D" parent="BackpackItem"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -11.725323)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_gmhai")
+
+[node name="InventoryContainer" type="Node" parent="."]
+script = ExtResource("6_ijg6q")
+metadata/_custom_type_script = "uid://c6gx7lusevbs8"

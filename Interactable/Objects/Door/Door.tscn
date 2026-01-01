@@ -1,0 +1,51 @@
+[gd_scene load_steps=14 format=3 uid="uid://8y5xiynmhpym"]
+
+[ext_resource type="Texture2D" uid="uid://imcxrlle28kk" path="res://Interactable/Objects/Door/WoodenDoor.png" id="1_mup1t"]
+[ext_resource type="Script" uid="uid://f0dxlddlc26u" path="res://Interactable/Objects/Door/Door.gd" id="2_alpva"]
+[ext_resource type="Texture2D" uid="uid://3gouxe8loi15" path="res://UI/Inventory/Arrow.png" id="3_4mshj"]
+[ext_resource type="AudioStream" uid="uid://kstwxufij57p" path="res://Sounds/Effects/DoorOpen1.ogg" id="3_7xt8p"]
+[ext_resource type="AudioStream" uid="uid://d32bd0vberl6h" path="res://Sounds/Effects/DoorOpen2.ogg" id="4_p4i88"]
+[ext_resource type="AudioStream" uid="uid://dlibw5qbr7h0a" path="res://Sounds/Effects/DoorOpen3.ogg" id="5_2tsbl"]
+[ext_resource type="AudioStream" uid="uid://cvvj37uch4kiq" path="res://Sounds/Effects/DoorOpen4.ogg" id="6_cq4v6"]
+[ext_resource type="AudioStream" uid="uid://b5wkbeamhw5wl" path="res://Sounds/Effects/DoorClose1.ogg" id="7_00012"]
+[ext_resource type="AudioStream" uid="uid://m7qmjoctc321" path="res://Sounds/Effects/DoorClose2.ogg" id="8_fj72t"]
+[ext_resource type="AudioStream" uid="uid://bjfkycv4orfup" path="res://Sounds/Effects/DoorClose3.ogg" id="9_fo33e"]
+[ext_resource type="AudioStream" uid="uid://bsotwfrjai33f" path="res://Sounds/Effects/DoorClose4.ogg" id="10_jgdm6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kf0xg"]
+size = Vector2(10, 47)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h56kd"]
+
+[node name="Door" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_mup1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_kf0xg")
+
+[node name="Door" type="Area2D" parent="." node_paths=PackedStringArray("collision_shape_copy")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_alpva")
+door_open_sounds = Array[AudioStream]([ExtResource("3_7xt8p"), ExtResource("4_p4i88"), ExtResource("5_2tsbl"), ExtResource("6_cq4v6")])
+door_close_sounds = Array[AudioStream]([ExtResource("7_00012"), ExtResource("8_fj72t"), ExtResource("9_fo33e"), ExtResource("10_jgdm6")])
+entity_name = "door"
+entity_desc = "Opens and closes, hopefully."
+collision_shape_copy = NodePath("../CollisionShape2D")
+metadata/_custom_type_script = "uid://f0dxlddlc26u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+shape = SubResource("CircleShape2D_h56kd")
+debug_color = Color(0.32921392, 0.61151665, 0.35749662, 0.41960785)
+
+[node name="Arrow" type="Sprite2D" parent="Door"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-1, -13)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4mshj")

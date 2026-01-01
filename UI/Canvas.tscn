@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnpw3u5j7a5j6"]
+
+[ext_resource type="PackedScene" uid="uid://bb7xhvb8ffur8" path="res://UI/FatigueEffect/FatigueEffect.tscn" id="1_7c1lu"]
+[ext_resource type="PackedScene" uid="uid://5t7a8oekn5ng" path="res://UI/Chatbox/Chatbox.tscn" id="1_gleao"]
+[ext_resource type="PackedScene" uid="uid://c8cxoex7q0tdm" path="res://UI/Context/Context.tscn" id="2_c2mgu"]
+[ext_resource type="PackedScene" uid="uid://ggvitrkoqdkc" path="res://UI/ArousalEffect/ArousalEffect.tscn" id="2_d2aq1"]
+[ext_resource type="PackedScene" uid="uid://dnokvj0s4ummx" path="res://UI/Inventory/InventoryMargin.tscn" id="3_urkqc"]
+[ext_resource type="PackedScene" uid="uid://li3nula8u4jf" path="res://UI/Status/StatusMargin.tscn" id="5_ujc8m"]
+[ext_resource type="PackedScene" uid="uid://bguysu4d6ne50" path="res://UI/Status/UIStatus.tscn" id="6_6rvyx"]
+[ext_resource type="Script" uid="uid://c447kiaoh41ny" path="res://UI/Misc/LevelTransitionEffect.gd" id="7_uyl3j"]
+[ext_resource type="PackedScene" uid="uid://g68oc8b86afw" path="res://UI/ScreenText/TextContainer.tscn" id="8_snoi4"]
+[ext_resource type="Script" uid="uid://bqct4j1h33x2q" path="res://UI/Misc/FPSCounter.gd" id="8_wfo78"]
+[ext_resource type="Script" uid="uid://doabgqvd0ldna" path="res://UI/ScreenText/ScreenText.gd" id="9_ijtmr"]
+
+[node name="Canvas" type="CanvasLayer"]
+
+[node name="Fatigue" parent="." instance=ExtResource("1_7c1lu")]
+
+[node name="Arousal" parent="." instance=ExtResource("2_d2aq1")]
+
+[node name="Chatbox" parent="." instance=ExtResource("1_gleao")]
+
+[node name="InventoryMargin" parent="." instance=ExtResource("3_urkqc")]
+
+[node name="Context" parent="." instance=ExtResource("2_c2mgu")]
+visible = false
+offset_right = 58.0
+offset_bottom = 38.0
+
+[node name="TraitsMargin" parent="." instance=ExtResource("5_ujc8m")]
+ui_status_scene = ExtResource("6_6rvyx")
+
+[node name="Debug" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="FPS" type="Label" parent="Debug"]
+modulate = Color(1, 1, 1, 0.66)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "FPS: 60"
+horizontal_alignment = 2
+script = ExtResource("8_wfo78")
+
+[node name="TextContainer" parent="." instance=ExtResource("8_snoi4")]
+script = ExtResource("9_ijtmr")
+
+[node name="LevelTransition" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("7_uyl3j")

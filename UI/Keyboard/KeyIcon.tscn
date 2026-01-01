@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2u73887ni6e2"]
+
+[ext_resource type="Texture2D" uid="uid://bv7a0qottlkdy" path="res://UI/Keyboard/KeyEmpty.png" id="1_v0bd8"]
+[ext_resource type="Script" uid="uid://xk4gvnl5jsn5" path="res://UI/Keyboard/KeyIcon.gd" id="2_ghpy1"]
+
+[sub_resource type="SystemFont" id="SystemFont_v0bd8"]
+subpixel_positioning = 0
+
+[node name="KeyIcon" type="TextureRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+texture = ExtResource("1_v0bd8")
+script = ExtResource("2_ghpy1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 26.0
+theme_override_fonts/font = SubResource("SystemFont_v0bd8")
+theme_override_font_sizes/font_size = 18
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1

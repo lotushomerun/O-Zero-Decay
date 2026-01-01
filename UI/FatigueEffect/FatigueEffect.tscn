@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb7xhvb8ffur8"]
+
+[ext_resource type="Shader" uid="uid://5cpppo3go6gr" path="res://UI/FatigueEffect/FatigueEffect.gdshader" id="1_6iwxu"]
+[ext_resource type="Script" uid="uid://bsjcwv4na7wcj" path="res://UI/FatigueEffect/FatigueEffect.gd" id="2_ie2js"]
+[ext_resource type="PackedScene" uid="uid://dv33cpvsrq0bb" path="res://Effects/Steam.tscn" id="3_0q82j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujc8m"]
+shader = ExtResource("1_6iwxu")
+shader_parameter/effect_intensity = 0.0
+shader_parameter/max_fisheye_strength = 0.5
+shader_parameter/max_sharpen_strength = 1.66000007885
+shader_parameter/min_sharpen_radius = 0.001
+shader_parameter/max_sharpen_radius = 0.004
+shader_parameter/vignette_strength = 0.9
+shader_parameter/vignette_radius_min = 0.0
+shader_parameter/vignette_radius_max = 0.4400000209
+shader_parameter/vignette_softness = 0.35
+
+[node name="FatigueEffect" type="ColorRect"]
+material = SubResource("ShaderMaterial_ujc8m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("2_ie2js")
+steam_particles_scene = ExtResource("3_0q82j")

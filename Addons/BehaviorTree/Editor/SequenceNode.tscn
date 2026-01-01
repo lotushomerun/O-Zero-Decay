@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6inpi477flih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxip6"]
+bg_color = Color(0, 0.40279695, 0.3888683, 1)
+border_color = Color(0.050980393, 0.05882353, 0.07058824, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsjqx"]
+bg_color = Color(0, 0.40392157, 0.3882353, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eddv0"]
+bg_color = Color(0.5557249, 0.23575675, 0.17924151, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="GraphNode" type="GraphNode"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_lxip6")
+title = "Sequence"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = true
+slot/1/right_type = 0
+slot/1/right_color = Color(0, 0.40392157, 0.3882353, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+
+[node name="Controls" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Add" type="Button" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_bsjqx")
+text = "Add"
+
+[node name="Sub" type="Button" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_eddv0")
+text = "Sub"
+
+[node name="Port" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.40392157, 0.3882353, 1)
+theme_override_font_sizes/font_size = 10
+text = "Port 1"
+horizontal_alignment = 2

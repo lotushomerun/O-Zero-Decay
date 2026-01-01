@@ -1,0 +1,104 @@
+[gd_resource type="Resource" script_class="BehaviorTreeResource" load_steps=19 format=3 uid="uid://b16a5wosan5lx"]
+
+[ext_resource type="Script" uid="uid://c2vdhhdphidbq" path="res://Addons/BehaviorTree/Nodes/BehaviorNode.gd" id="1_25x8l"]
+[ext_resource type="Script" uid="uid://bk7jwn8hmilnh" path="res://Addons/BehaviorTree/Nodes/BehaviorReturn.gd" id="2_epunq"]
+[ext_resource type="Script" uid="uid://d2bpb5e1wn48x" path="res://Addons/BehaviorTree/Nodes/BehaviorOutput.gd" id="2_fpv02"]
+[ext_resource type="Script" uid="uid://crfasmjrx7jg6" path="res://Addons/BehaviorTree/Nodes/BehaviorTreeResource.gd" id="3_5srsw"]
+[ext_resource type="Script" uid="uid://bd1f7t0tp1jft" path="res://Addons/BehaviorTree/Nodes/BehaviorCall.gd" id="3_kosc7"]
+[ext_resource type="Script" uid="uid://c1j2l1l2rhrpt" path="res://Addons/BehaviorTree/Nodes/BehaviorCondition.gd" id="4_6fwn3"]
+
+[sub_resource type="Resource" id="Resource_13nm1"]
+script = ExtResource("2_epunq")
+is_failure = true
+saved_position = Vector2(658.8905, 89.41529)
+base_name = "Return"
+
+[sub_resource type="Resource" id="Resource_jo272"]
+script = ExtResource("2_epunq")
+saved_position = Vector2(1098.8906, 89.41529)
+base_name = "Return"
+
+[sub_resource type="Resource" id="Resource_iffco"]
+script = ExtResource("3_kosc7")
+expression_text = "{rig}.flip_skeleton()"
+saved_position = Vector2(1098.8906, 9.415291)
+custom_name = "Flip"
+base_name = "Call"
+
+[sub_resource type="Resource" id="Resource_qxk64"]
+script = ExtResource("4_6fwn3")
+expression_text = "{rig}.facing_right == false"
+true_node = SubResource("Resource_iffco")
+false_node = SubResource("Resource_jo272")
+children = Array[ExtResource("1_25x8l")]([SubResource("Resource_jo272"), SubResource("Resource_iffco")])
+saved_position = Vector2(878.8905, -10.584709)
+custom_name = "Looking Left"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_alt44"]
+script = ExtResource("2_epunq")
+saved_position = Vector2(1098.8906, 209.41528)
+base_name = "Return"
+
+[sub_resource type="Resource" id="Resource_vuktp"]
+script = ExtResource("3_kosc7")
+expression_text = "{rig}.flip_skeleton()"
+saved_position = Vector2(1098.8906, 149.41528)
+custom_name = "Flip"
+base_name = "Call"
+
+[sub_resource type="Resource" id="Resource_468jf"]
+script = ExtResource("4_6fwn3")
+expression_text = "{rig}.facing_right == true"
+true_node = SubResource("Resource_vuktp")
+false_node = SubResource("Resource_alt44")
+children = Array[ExtResource("1_25x8l")]([SubResource("Resource_alt44"), SubResource("Resource_vuktp")])
+saved_position = Vector2(878.8905, 109.41529)
+custom_name = "Looking Right"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_ixvyb"]
+script = ExtResource("4_6fwn3")
+expression_text = "{target_dir} == 1"
+true_node = SubResource("Resource_qxk64")
+false_node = SubResource("Resource_468jf")
+children = Array[ExtResource("1_25x8l")]([SubResource("Resource_qxk64"), SubResource("Resource_468jf")])
+saved_position = Vector2(658.8905, -10.584709)
+custom_name = "Target is Right"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_nuupi"]
+script = ExtResource("4_6fwn3")
+expression_text = "{target_dir} != 0"
+true_node = SubResource("Resource_ixvyb")
+false_node = SubResource("Resource_13nm1")
+children = Array[ExtResource("1_25x8l")]([SubResource("Resource_13nm1"), SubResource("Resource_ixvyb")])
+saved_position = Vector2(398.8905, 9.415291)
+custom_name = "Have Direction?"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_kosc7"]
+script = ExtResource("2_epunq")
+is_failure = true
+saved_position = Vector2(400.7296, 127.32949)
+base_name = "Return"
+
+[sub_resource type="Resource" id="Resource_6fwn3"]
+script = ExtResource("4_6fwn3")
+expression_text = "{character}.is_fully_mobile()"
+true_node = SubResource("Resource_nuupi")
+false_node = SubResource("Resource_kosc7")
+children = Array[ExtResource("1_25x8l")]([SubResource("Resource_nuupi"), SubResource("Resource_kosc7")])
+saved_position = Vector2(116.85308, 3.2853322)
+custom_name = "Can Move?"
+base_name = "Condition"
+
+[sub_resource type="Resource" id="Resource_epunq"]
+script = ExtResource("2_fpv02")
+children = Array[ExtResource("1_25x8l")]([SubResource("Resource_6fwn3")])
+base_name = "Output"
+
+[resource]
+script = ExtResource("3_5srsw")
+root = SubResource("Resource_epunq")
+metadata/_custom_type_script = "uid://crfasmjrx7jg6"

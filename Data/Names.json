@@ -1,0 +1,14 @@
+{
+	"MALE": [
+		"Alex", "David", "John", "Michael", "Leo", "Ethan", "James", "William", "Benjamin", "Lucas",
+		"Henry", "Alexander", "Daniel", "Matthew", "Joseph", "Samuel", "Jackson", "Davidson", "Nathan", "Gabriel"
+	],
+	"FEMALE": [
+		"Alice", "Emma", "Sophia", "Lily", "Mia", "Olivia", "Ava", "Isabella", "Charlotte", "Amelia",
+		"Harper", "Evelyn", "Abigail", "Emily", "Ella", "Madeline", "Scarlett", "Victoria", "Aurora", "Zoe"
+	],
+	"NONBINARY": [
+		"Sam", "Jordan", "Casey", "Taylor", "Riley", "Morgan", "Alexis", "Cameron", "Dakota", "Skyler",
+		"Avery", "Quinn", "Reese", "Finley", "Emerson", "Harley", "Phoenix", "Rowan", "Sawyer", "Blake"
+	]
+}
