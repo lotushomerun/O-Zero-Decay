@@ -133,6 +133,10 @@ func _get_shoved(attacker: Human) -> void:
 	emit_signal("on_got_shoved", attacker) # Someone just shoved us...
 	var attacker_rig: HumanRig = attacker.rig as HumanRig
 	character.actions.fall(true if character.rig.facing_right != attacker_rig.facing_right else false)
+	if attacker == Player.this.character:
+		Chatbox.regular_message("[color=info]You push %s over![/color]" % [character.char_data.known_as])
+	elif character == Player.this.character:
+		Chatbox.important_message("[color=danger][b][i]%s pushes you over![/i][/b][/color]" % [attacker.char_data.known_as], Chatbox.ColorLib["danger"])
 	SoundManager.play_sound_2d(SoundLib.push_sound, character.global_position)
 	stamina.add_stunned(2.0)
 #endregion
@@ -160,6 +164,8 @@ signal on_struggle
 
 func _grab(victim: Human) -> void:
 	emit_signal("on_grabbed", victim) # We just grabbed someone!
+	if character == Player.this.character:
+		Chatbox.important_message("[color=warning]You grab %s![/color]" % [victim.char_data.known_as], Chatbox.ColorLib["warning"])
 	
 	wrestling_progress = 0.0
 	wrestling_opponent = victim

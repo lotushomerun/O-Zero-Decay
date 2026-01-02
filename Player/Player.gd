@@ -27,6 +27,9 @@ func _ready() -> void:
 	var door_id: String = SaveState.get_spawn_door()
 	if door_id.length() > 0: Door.position_at_door(character, door_id)
 	
+	if interactable != null:
+		interactable.entity_name = "You"
+		interactable.entity_desc = this.character.about_human()
 	about_player()
 	#random_loadout()
 	
@@ -53,30 +56,8 @@ func random_loadout() -> void:
 	for node: Area2D in to_equip: force_equip_clothes(node)
 
 func about_player() -> void:
-	var human: Human = character
-	var data: CharData = human.char_data
-	
-	var gender_name: String = CharData.GenderIdentity.keys()[data.identity]
-	var appearance_name: String = CharData.AppearanceType.keys()[data.appearance]
-	var voice_name: String = CharData.VoiceType.keys()[data.voice]
-	
-	var penis_text: String = "You have a penis" if data.male_genitals else "You have a vagina"
-	var breasts_text: String = "you have breasts" if data.has_breasts else "your chest is flat"
-	
-	var npc_perception: CharData.NPCPerception = data.npc_perceived_gender()
-	var perceived_as: String
-	
-	match npc_perception:
-		CharData.NPCPerception.MASCULINE: perceived_as = "You are generally seen as a male"
-		CharData.NPCPerception.FEMININE: perceived_as = "You are generally seen as a female"
-		CharData.NPCPerception.ANDROGYNOUS: perceived_as = "People are generally unsure of your gender"
-	
-	Chatbox.regular_message("[color=info]You're known as %s. You're %d years old. You consider yourself to be %s. You look %s, your voice sounds %s. %s and %s. %s.[/color]" % 
-	[data.known_as, data.age, gender_name.to_lower(), appearance_name.to_lower(), voice_name.to_lower(), penis_text, breasts_text, perceived_as])
-	
-	var hair_color_text: String = "Your hair is [i][color=%s]%s[/color][/i]" % [data.hair_color.to_html(), data.get_hair_color_name().to_lower()]
-	var eye_color_text: String = "your eyes are [i][color=%s]%s[/color][/i]" % [data.eye_color.to_html(), data.get_eye_color_name().to_lower()]
-	Chatbox.regular_message("[color=info]%s, %s.[/color]" % [hair_color_text, eye_color_text])
+	Chatbox.regular_message("[color=info]%s.[/color]" % 
+	[this.character.about_human()])
 #endregion
 
 #region Process

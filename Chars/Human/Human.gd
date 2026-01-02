@@ -86,6 +86,8 @@ func _ready() -> void:
 		char_data = random_data
 	
 	human_rig.load_appearance(char_data)
+	interactable.entity_name = char_data.known_as
+	interactable.entity_desc = about_human()
 	
 	# Statuses
 	if char_data.body_height != CharData.Height.MEDIUM:
@@ -177,3 +179,83 @@ func _try_half_mobile_move() -> void:
 	elif anim_action == AnimActions.LayOnFront: actions.lay_to_knees()
 	elif anim_action == AnimActions.OnKnees: actions.stand_from_knees()
 #endregion
+
+func he_she() -> String:
+	var pronoun: String = "they"
+	match CharData.GenderIdentity.keys()[char_data.identity]: 
+		"MALE":
+			pronoun = "he"
+		"FEMALE":
+			pronoun = "she"
+	return pronoun
+	
+func hes_shes() -> String:
+	var pronoun: String = "they're"
+	match CharData.GenderIdentity.keys()[char_data.identity]: 
+		"MALE":
+			pronoun = "he's"
+		"FEMALE":
+			pronoun = "she's"
+	return pronoun
+
+func his_her() -> String:
+	var pronoun: String = "their"
+	match CharData.GenderIdentity.keys()[char_data.identity]: 
+		"MALE":
+			pronoun = "his"
+		"FEMALE":
+			pronoun = "her"
+	return pronoun
+	
+func his_hers() -> String:
+	var pronoun: String = "their"
+	match CharData.GenderIdentity.keys()[char_data.identity]: 
+		"MALE":
+			pronoun = "his"
+		"FEMALE":
+			pronoun = "her's"
+	return pronoun
+	
+func him_her() -> String:
+	var pronoun: String = "them"
+	match CharData.GenderIdentity.keys()[char_data.identity]: 
+		"MALE":
+			pronoun = "him"
+		"FEMALE":
+			pronoun = "her"
+	return pronoun
+
+func himself_herself() -> String:
+	var pronoun: String = "themselves"
+	match CharData.GenderIdentity.keys()[char_data.identity]: 
+		"MALE":
+			pronoun = "himself"
+		"FEMALE":
+			pronoun = "herself"
+	return pronoun
+
+func about_human() -> String:
+	var data: CharData = char_data
+	var is_player: bool = false
+	if Player.this != null:
+		is_player = (self == Player.this.character)
+	
+	var gender_name: String = CharData.GenderIdentity.keys()[data.identity]
+	var appearance_name: String = CharData.AppearanceType.keys()[data.appearance]
+	var voice_name: String = CharData.VoiceType.keys()[data.voice]
+	
+	var penis_text: String = ("%s a penis" % [TextManager.parse("You have",self,1)]) if data.male_genitals else ("%s a vagina" % [TextManager.parse("you have",self,1)])
+	var breasts_text: String = ("%s breasts" % [TextManager.parse("you have",self,1)]) if data.has_breasts else ("%s chest is flat" % [TextManager.parse("your",self,1)])
+	
+	var npc_perception: CharData.NPCPerception = data.npc_perceived_gender()
+	var perceived_as: String
+	#print(TextManager.split_check("test:ing", ["ing"]))
+	
+	match npc_perception:
+		CharData.NPCPerception.MASCULINE: perceived_as = "%s generally seen as a male" % [TextManager.parse("You are",self,1)]
+		CharData.NPCPerception.FEMININE: perceived_as = "%s generally seen as a female" % [TextManager.parse("You are",self,1)]
+		CharData.NPCPerception.ANDROGYNOUS: perceived_as = "People are generally unsure of %s gender" % [TextManager.parse("your",self)]
+	
+	var hair_color_text: String = "%s hair is [i][color=%s]%s[/color][/i]" % [TextManager.parse("Your",self,1), data.hair_color.to_html(), data.get_hair_color_name().to_lower()]
+	var eye_color_text: String = "%s eyes are [i][color=%s]%s[/color][/i]" % [TextManager.parse("your",self,1), data.eye_color.to_html(), data.get_eye_color_name().to_lower()]
+	return "[color=info]%s %s. %s %d years old. %s %s to be %s. %s %s, %s voice sounds %s. %s and %s. %s.[/n]%s, %s[/color]" % [("You're known as" if is_player else "This is"),data.known_as, TextManager.parse("You're",self,1), data.age, TextManager.parse("You consider",self,1), TextManager.parse("yourself",self,1), gender_name.to_lower(), TextManager.parse("You look",self,1), appearance_name.to_lower(), TextManager.parse("Your",self,1), voice_name.to_lower(), penis_text, breasts_text, perceived_as, hair_color_text, eye_color_text]

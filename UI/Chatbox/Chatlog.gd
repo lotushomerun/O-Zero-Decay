@@ -12,7 +12,6 @@ func init_chatlog(txt: String, underscore_show: bool = false, underscore_color: 
 	var last_space_index := -1
 	var open_tags := []
 	var cut_index := 0
-	
 	while index < txt.length():
 		if txt[index] == "[":
 			var close_bracket := txt.find("]", index)
@@ -21,7 +20,15 @@ func init_chatlog(txt: String, underscore_show: bool = false, underscore_color: 
 			if tag.begins_with("[/"):
 				if open_tags.size() > 0 and open_tags[-1] == tag.replace("/", ""): open_tags.pop_back()
 			else: open_tags.append(tag)
-			index = close_bracket + 1
+			# jank newline
+			if txt[close_bracket-1] == "n" && txt[close_bracket-2] == "/":
+				print("break")
+				txt = txt.replace("[/n]","")
+				index = close_bracket-4
+				last_space_index = index
+				break
+			else:
+				index = close_bracket + 1
 		else:
 			if txt[index] == " ": last_space_index = index
 			index += 1
