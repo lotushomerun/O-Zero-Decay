@@ -34,6 +34,23 @@ func add_stunned(n: float) -> void:
 	stunned = clampf(stunned + n, 0.0, Stunned_Max)
 	if stunned != old: emit_signal("stunned_changed", stunned, old)
 
+
+	# stunned, we can rape
+	
+	for i in range(character.interactable.actions.size()):
+		var a = character.interactable.actions[i]
+		if a.get_script().get_global_name() == "RapeAction":
+			if stunned > 0:
+				return
+			else:
+				character.interactable.actions.erase(a)
+				character.interactable.primary_action = null
+				return
+	if stunned > 0:
+		var act = RapeAction.new()
+		character.interactable.actions.append(act)
+		character.interactable.primary_action = act
+
 func add_fatigue(n: float) -> void:
 	var old: float = fatigue
 	fatigue = clampf(fatigue + n, 0.0, Faint_Threshold_Base)

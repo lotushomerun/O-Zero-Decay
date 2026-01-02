@@ -32,5 +32,6 @@ func _second() -> void: # Always call super._second()
 		seconds = clamp(seconds - 1, 0, INF)
 		if is_instance_valid(ui_status) && ui_status.title_panel.visible: ui_status._update_timer()
 		if seconds <= 0:
-			ui_status._stop_blinking()
+			if ui_status != null:
+				ui_status._stop_blinking()
 			human.remove_status(self)

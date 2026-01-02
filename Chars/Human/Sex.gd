@@ -237,6 +237,12 @@ func _sex_ended() -> void:
 		if sex_data.has("bottom_back_arm_z_offset"): Layering.reset_node_z(human_rig.back_upper_arm_bone)
 		if sex_data.has("bottom_penis_z_offset"): Layering.reset_node_z(human_rig.penis_node)
 	
+	if !is_top:
+		character.set_mobility(Char.Mobility.Half)
+		character.anim_action = character.AnimActions.LayOnFront
+		character.stamina.add_stunned(5.0)
+		#character.movement._try_half_mobile_move()
+	character.add_status(FuckedStatus.new())
 	emit_signal("on_sex_end")
 #endregion
 
