@@ -33,27 +33,29 @@ volume_db = -50.0
 
 [node name="Wind" type="AudioStreamPlayer" parent="."]
 
-[node name="Sky" type="ColorRect" parent="."]
+[node name="CanvasBack" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sky" type="ColorRect" parent="CanvasBack"]
 z_index = -50
 z_as_relative = false
 material = SubResource("ShaderMaterial_osukm")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -329.0
-offset_top = -165.0
-offset_right = 321.0
-offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Darkness" type="ColorRect" parent="."]
+[node name="Darkness" type="ColorRect" parent="CanvasBack"]
 z_index = 999
-offset_left = -329.0
-offset_top = -165.0
-offset_right = 321.0
-offset_bottom = 165.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 

@@ -39,12 +39,12 @@ const Heartbeat_Return_Duration := 0.33
 @onready var wind: AudioStreamPlayer = $Wind
 
 # Sky
-@onready var sky: ColorRect = $Sky
+@onready var sky: ColorRect = $CanvasBack/Sky
 @onready var clouds: Parallax2D = $Clouds
 @onready var rain_clouds: Parallax2D = $RainClouds
 
 # Darkness
-@onready var darkness: ColorRect = $Darkness
+@onready var darkness: ColorRect = $CanvasBack/Darkness
 
 static func register_instance(n: Camera) -> void: this = n
 
